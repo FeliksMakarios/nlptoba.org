@@ -1,0 +1,9 @@
+# Hasil build
+site/
+# Salinan sumber, dibuat ulang oleh scripts/sync_sources.py
+sumber/
+docs/anotasi-ud/pedoman.md
+docs/anotasi-ud/Pedoman_Anotasi_UD_BatakToba_v1.0.docx
+docs/assets/data/
+__pycache__/
+.venv/

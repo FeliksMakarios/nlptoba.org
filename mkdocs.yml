@@ -1,0 +1,101 @@
+site_name: NLP Batak Toba
+site_url: https://nlptoba.org/
+site_description: >-
+  Proyek pemrosesan bahasa alami untuk bahasa Batak Toba: korpus, pedoman
+  anotasi Universal Dependencies, dan luaran penelitian lanjutan.
+site_author: Feliks Victor Parningotan Samosir
+repo_url: https://github.com/FeliksMakarios/nlptoba.org
+repo_name: nlptoba.org
+edit_uri: ""
+copyright: >-
+  Program Studi Informatika, Universitas Pelita Harapan. Isi data mengikuti
+  lisensi masing-masing repositori sumber.
+
+theme:
+  name: material
+  language: id
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Mode gelap
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Mode terang
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - search.highlight
+    - content.code.copy
+  icon:
+    repo: fontawesome/brands/github
+
+plugins:
+  - search
+  - i18n:
+      docs_structure: suffix
+      fallback_to_default: true
+      reconfigure_material: true
+      reconfigure_search: true
+      languages:
+        - locale: id
+          default: true
+          name: Bahasa Indonesia
+          build: true
+        - locale: en
+          name: English
+          build: true
+          site_description: >-
+            Natural language processing for Batak Toba: corpus, Universal
+            Dependencies annotation guideline, and follow-up research outputs.
+          nav_translations:
+            Beranda: Home
+            Korpus (Tahap 1): Corpus (Stage 1)
+            Anotasi UD (Tahap 2): UD Annotation (Stage 2)
+            Ringkasan: Overview
+            Pedoman v1.0: Guideline v1.0
+            Kalimat pilot: Pilot sentences
+            Pohon dependensi: Dependency trees
+            Tentang: About
+
+nav:
+  - Beranda: index.md
+  - Korpus (Tahap 1): korpus/index.md
+  - Anotasi UD (Tahap 2):
+      - Ringkasan: anotasi-ud/index.md
+      - Pedoman v1.0: anotasi-ud/pedoman.md
+      - Kalimat pilot: anotasi-ud/kalimat-pilot.md
+      - Pohon dependensi: anotasi-ud/pohon.md
+  - Tentang: tentang.md
+
+extra_css:
+  - assets/css/extra.css
+
+extra_javascript:
+  - assets/js/common.js
+  - assets/js/pilot.js
+  - assets/js/conllu-tree.js
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - def_list
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg

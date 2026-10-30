@@ -1,0 +1,161 @@
+/* Warna terinspirasi ulos: merah tua, hitam, dan putih. */
+:root,
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: #7a1f1f;
+  --md-primary-fg-color--light: #9a3a3a;
+  --md-primary-fg-color--dark: #561414;
+  --md-accent-fg-color: #b4532a;
+  --nt-card-bg: #faf7f5;
+  --nt-border: #e4dcd6;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #8f2a2a;
+  --md-primary-fg-color--light: #a94545;
+  --md-primary-fg-color--dark: #6a1b1b;
+  --md-accent-fg-color: #e08a5f;
+  --nt-card-bg: #24212a;
+  --nt-border: #3a3540;
+}
+
+/* Kartu tahap pada beranda */
+.md-typeset .grid.cards > ul > li {
+  background: var(--nt-card-bg);
+  border-color: var(--nt-border);
+}
+
+.md-typeset .nt-status {
+  display: inline-block;
+  padding: 0 0.5em;
+  border-radius: 0.2rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border: 1px solid currentColor;
+}
+.md-typeset .nt-status--done { color: #2e7d32; }
+.md-typeset .nt-status--run { color: var(--md-accent-fg-color); }
+.md-typeset .nt-status--plan { color: var(--md-default-fg-color--light); }
+[data-md-color-scheme="slate"] .md-typeset .nt-status--done { color: #81c784; }
+
+/* Penjelajah kalimat pilot */
+.pilot-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1rem;
+  margin: 1rem 0 0.4rem;
+}
+.pilot-filters label,
+.dep-pick {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.7rem;
+  color: var(--md-default-fg-color--light);
+  min-width: 9rem;
+  flex: 1 1 9rem;
+}
+.pilot-filters select,
+.pilot-filters input,
+.dep-pick select {
+  margin-top: 0.2rem;
+  padding: 0.35rem 0.4rem;
+  font: inherit;
+  font-size: 0.8rem;
+  color: var(--md-default-fg-color);
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--nt-border);
+  border-radius: 0.2rem;
+  max-width: 100%;
+}
+.pilot-count {
+  font-size: 0.75rem;
+  color: var(--md-default-fg-color--light);
+}
+.pilot-item {
+  border-top: 1px solid var(--nt-border);
+  padding: 0.6rem 0;
+}
+.pilot-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.8rem;
+  font-size: 0.68rem;
+  color: var(--md-default-fg-color--light);
+}
+.md-typeset .pilot-toba {
+  margin: 0.3rem 0 0.1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.md-typeset .pilot-trans {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--md-default-fg-color--light);
+}
+.pilot-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.35rem;
+}
+.pilot-tags span {
+  font-size: 0.62rem;
+  padding: 0.05rem 0.4rem;
+  border-radius: 1rem;
+  background: var(--nt-card-bg);
+  border: 1px solid var(--nt-border);
+}
+.md-typeset .pilot-dist table tr.total td { font-weight: 700; }
+
+/* Penampil pohon dependensi */
+.dep-pick { max-width: 32rem; }
+.md-typeset .dep-text {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 1rem 0 0;
+}
+.md-typeset .dep-gloss {
+  margin: 0.1rem 0 0.4rem;
+  color: var(--md-default-fg-color--light);
+}
+.dep-scroll {
+  overflow-x: auto;
+  padding: 0.4rem 0;
+  border: 1px solid var(--nt-border);
+  border-radius: 0.2rem;
+  background: var(--nt-card-bg);
+}
+.dep-svg { display: block; }
+.dep-arc { fill: none; stroke: var(--md-default-fg-color--light); stroke-width: 1.3; }
+.dep-head { fill: var(--md-default-fg-color--light); }
+.dep-label {
+  fill: var(--md-accent-fg-color);
+  font-size: 12px;
+  font-weight: 600;
+  paint-order: stroke;
+  stroke: var(--nt-card-bg);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+.dep-form { fill: var(--md-default-fg-color); font-size: 15px; }
+.dep-upos { fill: var(--md-default-fg-color--light); font-size: 11px; letter-spacing: 0.04em; }
+.dep-table-wrap { overflow-x: auto; }
+.md-typeset .dep-table table { font-size: 0.7rem; }
+
+/* Menu pilihan bahasa milik tema berada di tepi kanan layar ponsel.
+   Ratakan ke kanan agar tidak melewati lebar layar. */
+@media screen and (max-width: 59.984375em) {
+  .md-header .md-select__inner {
+    left: auto;
+    right: 0;
+    transform: translate3d(0, 0.3rem, 0);
+  }
+  .md-header .md-select:focus-within .md-select__inner,
+  .md-header .md-select:hover .md-select__inner {
+    transform: translate3d(0, 0, 0);
+  }
+  .md-header .md-select__inner::after {
+    left: auto;
+    right: 0.6rem;
+  }
+}

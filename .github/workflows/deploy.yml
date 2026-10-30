@@ -1,0 +1,75 @@
+name: Bangun dan terbitkan situs
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  # Ambil perubahan terbaru dari repo penelitian setiap hari.
+  schedule:
+    - cron: "17 0 * * *"
+  # Dapat dipicu dari repo penelitian setelah ada pembaruan.
+  repository_dispatch:
+    types: [sumber-diperbarui]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      NO_MKDOCS_2_WARNING: "1"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Ambil repo korpus tahap 1
+        uses: actions/checkout@v4
+        with:
+          repository: FeliksMakarios/batak-toba-korpus
+          path: sumber/batak-toba-korpus
+
+      - name: Ambil repo anotasi UD tahap 2
+        uses: actions/checkout@v4
+        with:
+          repository: FeliksMakarios/batak-toba-corpus-v2
+          path: sumber/batak-toba-corpus-v2
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Pasang dependensi
+        run: pip install -r requirements.txt
+
+      - name: Salin berkas sumber
+        run: >-
+          python scripts/sync_sources.py
+          --v2 sumber/batak-toba-corpus-v2
+          --korpus sumber/batak-toba-korpus
+          --docs docs
+
+      - name: Bangun situs
+        run: mkdocs build --strict
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
