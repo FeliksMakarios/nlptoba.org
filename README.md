@@ -64,6 +64,22 @@ Setiap halaman punya dua berkas: `nama.md` (Indonesia) dan `nama.en.md` (Inggris
 3. Bila tahap baru punya repo sendiri, tambahkan langkah checkout di `.github/workflows/deploy.yml` dan salin berkasnya lewat `scripts/sync_sources.py`.
 4. Tambahkan kartu tahap baru di `docs/index.md` dan `docs/index.en.md`.
 
+## Akses ke repo sumber privat
+
+Repo `batak-toba-corpus-v2` masih privat, sehingga workflow memerlukan deploy key baca saja. Langkah ini dilakukan sekali oleh pemilik repo, di komputer sendiri.
+
+1. Buat pasangan kunci baru tanpa passphrase:
+
+   ```bash
+   ssh-keygen -t ed25519 -N "" -C "nlptoba.org deploy" -f nlptoba-deploy
+   ```
+
+2. Di repo **batak-toba-corpus-v2**, buka Settings, Deploy keys, Add deploy key. Tempel isi `nlptoba-deploy.pub`. Biarkan "Allow write access" tidak dicentang.
+3. Di repo **nlptoba.org**, buka Settings, Secrets and variables, Actions, New repository secret. Beri nama `SUMBER_V2_DEPLOY_KEY` dan tempel isi berkas `nlptoba-deploy` (kunci privat).
+4. Hapus kedua berkas kunci dari komputer setelah selesai.
+
+Bila kelak repo `batak-toba-corpus-v2` dijadikan publik, secret ini boleh dihapus.
+
 ## Pengaturan GitHub Pages dan domain
 
 Langkah ini dilakukan sekali oleh pemilik repo.

@@ -34,11 +34,14 @@ jobs:
           repository: FeliksMakarios/batak-toba-korpus
           path: sumber/batak-toba-korpus
 
+      # Repo tahap 2 masih privat. Akses baca memakai deploy key, lihat README.
+      # Bila secret kosong, checkout memakai token bawaan (cukup untuk repo publik).
       - name: Ambil repo anotasi UD tahap 2
         uses: actions/checkout@v4
         with:
           repository: FeliksMakarios/batak-toba-corpus-v2
           path: sumber/batak-toba-corpus-v2
+          ssh-key: ${{ secrets.SUMBER_V2_DEPLOY_KEY }}
 
       - uses: actions/setup-python@v5
         with:
