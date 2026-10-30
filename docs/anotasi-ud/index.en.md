@@ -2,6 +2,8 @@
 title: Universal Dependencies Annotation (Stage 2)
 ---
 
+<p class="nt-kicker">Year I · Semester 2 · 2026</p>
+
 # Universal Dependencies Annotation (Stage 2)
 
 The project "Development of Universal Dependencies Annotation Guidelines for Batak Toba and Initial Testing on a Small Corpus" (Beginning Lecturer Research Scheme, Universitas Pelita Harapan, July to December 2026). This stage builds on the [Stage 1 corpus](../korpus/index.md) towards morphosyntactic annotation based on Universal Dependencies (UD) version 2.
@@ -17,14 +19,15 @@ UD offers part-of-speech categories, morphological features, and dependency rela
 
 Before this project, Batak Toba had no treebank, no part-of-speech or dependency annotation, and no annotation guideline.
 
-## Status
+## Research workflow
 
-| Method stage | Status |
-|---|---|
-| 1. Synthesis of annotation decisions from the literature | <span class="nt-status nt-status--done">COMPLETED</span> |
-| 2. First version of the guideline | <span class="nt-status nt-status--done">COMPLETED</span> version 1.0 |
-| 3. Pilot annotation of 250 sentences by two annotators | <span class="nt-status nt-status--run">IN PROGRESS</span> since 5 October 2026 |
-| 4. Inter-annotator agreement and guideline revision | <span class="nt-status nt-status--plan">PLANNED</span> November 2026 |
+<div class="nt-flow">
+  <div class="nt-step nt-y1"><span class="nt-step-title">Stage 1 corpus</span><span class="nt-step-note">Multi-genre corpus from the 2025 grant.</span><span class="nt-step-state">Done</span></div>
+  <div class="nt-step nt-y2"><span class="nt-step-title">Decision synthesis</span><span class="nt-step-note">Review of UD v2 and the Indonesian, Tagalog, and Cebuano UD guidelines.</span><span class="nt-step-state">Done</span></div>
+  <div class="nt-step nt-y3"><span class="nt-step-title">Guideline v1.0</span><span class="nt-step-note">Guideline and labelled examples, including voice arguments.</span><span class="nt-step-state">Done</span></div>
+  <div class="nt-step nt-y4"><span class="nt-step-title">Pilot annotation</span><span class="nt-step-note">250 sentences by two annotators, since 5 October 2026.</span><span class="nt-step-state">In progress</span></div>
+  <div class="nt-step nt-y5 is-plan"><span class="nt-step-title">Evaluation and revision</span><span class="nt-step-note">Inter-annotator agreement and guideline v1.1, November 2026.</span><span class="nt-step-state">Planned</span></div>
+</div>
 
 ## Outputs
 

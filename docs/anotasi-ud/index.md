@@ -2,6 +2,8 @@
 title: Anotasi Universal Dependencies (Tahap 2)
 ---
 
+<p class="nt-kicker">Tahun I · Semester 2 · 2026</p>
+
 # Anotasi Universal Dependencies (Tahap 2)
 
 Penelitian "Pengembangan Pedoman Anotasi Universal Dependencies untuk Bahasa Batak Toba dan Pengujian Awal pada Korpus Kecil" (Penelitian Dosen Pemula, Universitas Pelita Harapan, Juli sampai Desember 2026). Tahap ini melanjutkan [korpus tahap 1](../korpus/index.md) menuju anotasi morfosintaksis berbasis Universal Dependencies (UD) versi 2.
@@ -17,14 +19,15 @@ UD menyediakan kategori kelas kata, fitur morfologis, dan relasi dependensi yang
 
 Sampai penelitian ini dimulai, Batak Toba belum memiliki treebank, anotasi kelas kata dan dependensi, maupun pedoman anotasi.
 
-## Status
+## Alur penelitian
 
-| Tahap metode | Status |
-|---|---|
-| 1. Sintesis keputusan anotasi dari literatur | <span class="nt-status nt-status--done">SELESAI</span> |
-| 2. Perumusan pedoman versi awal | <span class="nt-status nt-status--done">SELESAI</span> versi 1.0 |
-| 3. Anotasi rintisan 250 kalimat oleh dua anotator | <span class="nt-status nt-status--run">BERJALAN</span> mulai 5 Oktober 2026 |
-| 4. Evaluasi kesepakatan antaranotator dan revisi pedoman | <span class="nt-status nt-status--plan">RENCANA</span> November 2026 |
+<div class="nt-flow">
+  <div class="nt-step nt-y1"><span class="nt-step-title">Korpus Tahap 1</span><span class="nt-step-note">Korpus multi-genre hasil hibah 2025.</span><span class="nt-step-state">Selesai</span></div>
+  <div class="nt-step nt-y2"><span class="nt-step-title">Sintesis Keputusan</span><span class="nt-step-note">Kajian UD v2, UD Indonesia, Tagalog, dan Cebuano.</span><span class="nt-step-state">Selesai</span></div>
+  <div class="nt-step nt-y3"><span class="nt-step-title">Pedoman v1.0</span><span class="nt-step-note">Pedoman dan contoh berlabel, termasuk argumen diatesis.</span><span class="nt-step-state">Selesai</span></div>
+  <div class="nt-step nt-y4"><span class="nt-step-title">Anotasi Awal</span><span class="nt-step-note">250 kalimat oleh dua anotator, mulai 5 Oktober 2026.</span><span class="nt-step-state">Berjalan</span></div>
+  <div class="nt-step nt-y5 is-plan"><span class="nt-step-title">Evaluasi dan Revisi</span><span class="nt-step-note">Kesepakatan antaranotator dan pedoman v1.1, November 2026.</span><span class="nt-step-state">Rencana</span></div>
+</div>
 
 ## Luaran
 

@@ -2,11 +2,26 @@
 title: Batak Toba Corpus (Stage 1)
 ---
 
+<p class="nt-kicker">Year I · Semester 1 · 2025</p>
+
 # Batak Toba Corpus (Stage 1)
 
 An initial Batak Toba (`bbc`) text corpus with Indonesian (`ind`) counterparts. It is the output of the project "Digitalisation and Preprocessing of a Batak Toba Language Corpus as a Foundation for Deep Learning Based Local Language Models" (Beginning Lecturer Research Scheme, Universitas Pelita Harapan, 2025, No. P-020-PDP-FTI/VII/2025).
 
 [:fontawesome-brands-github: batak-toba-korpus repository](https://github.com/FeliksMakarios/batak-toba-korpus){ .md-button .md-button--primary }
+
+## Data collection workflow
+
+<div class="nt-flow">
+  <div class="nt-step nt-y1"><span class="nt-step-title">Source inventory</span><span class="nt-step-note">Identifying online sources and defining a five-genre taxonomy.</span></div>
+  <div class="nt-step nt-y2"><span class="nt-step-title">Manual curation</span><span class="nt-step-note">Targeted search and recording with one shared template.</span></div>
+  <div class="nt-step nt-y3"><span class="nt-step-title">Digitisation</span><span class="nt-step-note">OCR for PDF and scanned documents, checked by hand.</span></div>
+  <div class="nt-step nt-y4"><span class="nt-step-title">Translation</span><span class="nt-step-note">Two native speaker consultants transcribe and translate texts.</span></div>
+  <div class="nt-step nt-y5"><span class="nt-step-title">Checking and documentation</span><span class="nt-step-note">Spot checks, metadata, and a technical report.</span></div>
+</div>
+
+!!! info "Change from the original plan"
+    The proposal planned large-scale crawling and scraping. In practice the approach was narrowed to manual search and targeted curation for reasons of ethics, copyright, data quality, and time. The corpus is therefore smaller, but better curated and documented. Oral data is planned for a later update.
 
 ## Contents
 

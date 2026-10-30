@@ -2,11 +2,26 @@
 title: Korpus Batak Toba (Tahap 1)
 ---
 
+<p class="nt-kicker">Tahun I · Semester 1 · 2025</p>
+
 # Korpus Batak Toba (Tahap 1)
 
 Korpus teks awal bahasa Batak Toba (`bbc`) beserta padanannya dalam bahasa Indonesia (`ind`). Korpus ini adalah luaran penelitian "Digitalisasi dan Praproses Korpus Bahasa Batak Toba sebagai Fondasi Pengembangan Model Bahasa Lokal Berbasis Deep Learning" (Penelitian Dosen Pemula, Universitas Pelita Harapan, 2025, No. P-020-PDP-FTI/VII/2025).
 
 [:fontawesome-brands-github: Repositori batak-toba-korpus](https://github.com/FeliksMakarios/batak-toba-korpus){ .md-button .md-button--primary }
+
+## Alur pengumpulan data
+
+<div class="nt-flow">
+  <div class="nt-step nt-y1"><span class="nt-step-title">Inventarisasi Sumber</span><span class="nt-step-note">Menentukan sumber daring dan menyusun taksonomi lima genre.</span></div>
+  <div class="nt-step nt-y2"><span class="nt-step-title">Kurasi Manual</span><span class="nt-step-note">Penelusuran terarah dan pencatatan dengan satu templat bersama.</span></div>
+  <div class="nt-step nt-y3"><span class="nt-step-title">Digitalisasi</span><span class="nt-step-note">OCR untuk dokumen PDF dan hasil pindai, lalu diperiksa manual.</span></div>
+  <div class="nt-step nt-y4"><span class="nt-step-title">Penerjemahan</span><span class="nt-step-note">Dua narasumber penutur asli menyalin dan menerjemahkan teks.</span></div>
+  <div class="nt-step nt-y5"><span class="nt-step-title">Pemeriksaan dan Dokumentasi</span><span class="nt-step-note">Pemeriksaan acak, metadata, dan laporan teknis.</span></div>
+</div>
+
+!!! info "Perubahan dari rencana awal"
+    Proposal merencanakan crawling dan scraping berskala besar. Dalam pelaksanaan, pendekatan dipersempit menjadi penelusuran manual dan kurasi terarah karena pertimbangan etika, hak cipta, kualitas data, dan waktu. Korpus menjadi lebih kecil, tetapi lebih terkurasi dan terdokumentasi. Data lisan direncanakan pada pembaruan berikutnya.
 
 ## Isi korpus
 

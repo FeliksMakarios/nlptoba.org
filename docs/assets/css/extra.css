@@ -1,42 +1,300 @@
-/* Warna terinspirasi ulos: merah tua, hitam, dan putih. */
+/* Identitas visual mengikuti peta jalan lima tahun pada proposal:
+   satu warna untuk setiap tahun penelitian. */
+:root {
+  --nt-y1: #5e5a86;
+  --nt-y2: #ddb887;
+  --nt-y3: #a9bb9b;
+  --nt-y4: #4a7a85;
+  --nt-y5: #7a6576;
+  --nt-on-dark: #ffffff;
+  --nt-on-light: #1f1f1f;
+}
+
 :root,
 [data-md-color-scheme="default"] {
-  --md-primary-fg-color: #7a1f1f;
-  --md-primary-fg-color--light: #9a3a3a;
-  --md-primary-fg-color--dark: #561414;
-  --md-accent-fg-color: #b4532a;
-  --nt-card-bg: #faf7f5;
-  --nt-border: #e4dcd6;
+  --md-primary-fg-color: #3d3a5c;
+  --md-primary-fg-color--light: #5e5a86;
+  --md-primary-fg-color--dark: #2e2b47;
+  --md-accent-fg-color: #41707b;
+  --md-typeset-a-color: #41707b;
+  --nt-card-bg: #f7f6f9;
+  --nt-border: #e2e0ea;
+  --nt-done: #2f7d4f;
+  --nt-run: #8a6326;
 }
 
 [data-md-color-scheme="slate"] {
-  --md-primary-fg-color: #8f2a2a;
-  --md-primary-fg-color--light: #a94545;
-  --md-primary-fg-color--dark: #6a1b1b;
-  --md-accent-fg-color: #e08a5f;
-  --nt-card-bg: #24212a;
-  --nt-border: #3a3540;
+  --md-primary-fg-color: #2e2b47;
+  --md-primary-fg-color--light: #5e5a86;
+  --md-primary-fg-color--dark: #22203a;
+  --md-accent-fg-color: #8fc3cd;
+  --md-typeset-a-color: #8fc3cd;
+  --nt-card-bg: #24232f;
+  --nt-border: #393747;
+  --nt-done: #86d0a4;
+  --nt-run: #ddb887;
 }
 
-/* Kartu tahap pada beranda */
+/* Penanda status */
+.md-typeset .nt-status {
+  display: inline-block;
+  padding: 0 0.5em;
+  border-radius: 1rem;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+  white-space: nowrap;
+  border: 1px solid currentColor;
+}
+.md-typeset .nt-status--done { color: var(--nt-done); }
+.md-typeset .nt-status--run { color: var(--nt-run); }
+.md-typeset .nt-status--plan { color: var(--md-default-fg-color--light); }
+
+/* Kartu luaran pada halaman tahap */
 .md-typeset .grid.cards > ul > li {
   background: var(--nt-card-bg);
   border-color: var(--nt-border);
 }
 
-.md-typeset .nt-status {
-  display: inline-block;
-  padding: 0 0.5em;
-  border-radius: 0.2rem;
-  font-size: 0.7rem;
+/* Label kecil di atas judul halaman tahap */
+.md-typeset .nt-kicker {
+  margin: 0 0 0.3rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.02em;
-  border: 1px solid currentColor;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--md-default-fg-color--light);
 }
-.md-typeset .nt-status--done { color: #2e7d32; }
-.md-typeset .nt-status--run { color: var(--md-accent-fg-color); }
-.md-typeset .nt-status--plan { color: var(--md-default-fg-color--light); }
-[data-md-color-scheme="slate"] .md-typeset .nt-status--done { color: #81c784; }
+.md-typeset .nt-kicker::before {
+  content: "";
+  display: inline-block;
+  width: 0.6rem;
+  height: 0.6rem;
+  margin-right: 0.4rem;
+  border-radius: 50%;
+  background: var(--nt-y1);
+  vertical-align: -0.05rem;
+}
+
+/* Beranda */
+.md-typeset .nt-hero {
+  padding: 1.6rem 0 0.6rem;
+}
+.md-typeset .nt-hero h1 {
+  margin: 0 0 0.6rem;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--md-default-fg-color);
+}
+.md-typeset .nt-hero .nt-lead {
+  max-width: 40rem;
+  margin: 0 0 1.2rem;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--md-default-fg-color--light);
+}
+.md-typeset .nt-hero .md-button {
+  margin: 0 0.4rem 0.5rem 0;
+}
+
+.md-typeset .nt-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin: 1.2rem 0 0.4rem;
+}
+.md-typeset .nt-stat {
+  padding: 0.8rem 0.9rem;
+  background: var(--nt-card-bg);
+  border: 1px solid var(--nt-border);
+  border-radius: 0.3rem;
+}
+.md-typeset .nt-stat strong {
+  display: block;
+  font-size: 1.35rem;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+.md-typeset .nt-stat span {
+  font-size: 0.7rem;
+  color: var(--md-default-fg-color--light);
+}
+
+/* Peta jalan lima tahun */
+.md-typeset .nt-roadmap {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.6rem;
+  margin: 1rem 0;
+}
+.md-typeset .nt-year {
+  display: flex;
+  flex-direction: column;
+  background: var(--nt-card-bg);
+  border: 1px solid var(--nt-border);
+  border-radius: 0.3rem;
+  overflow: hidden;
+}
+.md-typeset .nt-year.is-current {
+  box-shadow: 0 0 0 2px var(--nt-year);
+}
+.md-typeset .nt-year-tab {
+  padding: 0.55rem 0.7rem;
+  background: var(--nt-year);
+  color: var(--nt-year-ink);
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+.md-typeset .nt-year-body {
+  padding: 0.6rem 0.7rem 0.7rem;
+  font-size: 0.68rem;
+  line-height: 1.45;
+  flex: 1;
+}
+.md-typeset .nt-year-body h4 {
+  margin: 0.2rem 0 0.15rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+.md-typeset .nt-year-body p {
+  margin: 0 0 0.5rem;
+  color: var(--md-default-fg-color--light);
+}
+.md-typeset .nt-year-foot {
+  padding: 0 0.7rem 0.7rem;
+}
+
+.nt-y1 { --nt-year: var(--nt-y1); --nt-year-ink: var(--nt-on-dark); }
+.nt-y2 { --nt-year: var(--nt-y2); --nt-year-ink: var(--nt-on-light); }
+.nt-y3 { --nt-year: var(--nt-y3); --nt-year-ink: var(--nt-on-light); }
+.nt-y4 { --nt-year: var(--nt-y4); --nt-year-ink: var(--nt-on-dark); }
+.nt-y5 { --nt-year: var(--nt-y5); --nt-year-ink: var(--nt-on-dark); }
+
+/* Kartu luaran per tahap */
+.md-typeset .nt-stages {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin: 1rem 0;
+}
+.md-typeset .nt-stage {
+  display: block;
+  padding: 0.9rem 1rem;
+  background: var(--nt-card-bg);
+  border: 1px solid var(--nt-border);
+  border-left: 0.3rem solid var(--nt-year);
+  border-radius: 0.3rem;
+  color: inherit;
+}
+.md-typeset a.nt-stage:hover {
+  border-color: var(--nt-year);
+}
+.md-typeset .nt-stage h3 {
+  margin: 0.4rem 0 0.3rem;
+  font-size: 0.9rem;
+}
+.md-typeset .nt-stage p {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--md-default-fg-color--light);
+}
+.md-typeset .nt-stage .nt-more {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--md-typeset-a-color);
+}
+
+/* Fakta bahasa */
+.md-typeset .nt-facts {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.3rem 1.2rem;
+  margin: 0.8rem 0;
+  font-size: 0.78rem;
+}
+.md-typeset .nt-facts dt {
+  font-weight: 700;
+}
+.md-typeset .nt-facts dd {
+  margin: 0;
+}
+
+/* Diagram alir tahap, meniru diagram alir pada proposal */
+.md-typeset .nt-flow {
+  display: flex;
+  margin: 1rem 0 1.4rem;
+  counter-reset: nt-step;
+}
+.md-typeset .nt-step {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  margin-right: -0.5rem;
+  padding: 0.7rem 1rem 0.75rem 1.25rem;
+  background: var(--nt-year);
+  color: var(--nt-year-ink);
+  clip-path: polygon(0 0, calc(100% - 0.9rem) 0, 100% 50%, calc(100% - 0.9rem) 100%, 0 100%, 0.9rem 50%);
+  counter-increment: nt-step;
+}
+.md-typeset .nt-step:first-child {
+  padding-left: 0.9rem;
+  clip-path: polygon(0 0, calc(100% - 0.9rem) 0, 100% 50%, calc(100% - 0.9rem) 100%, 0 100%);
+}
+.md-typeset .nt-step:last-child { margin-right: 0; }
+.md-typeset .nt-step.is-plan { opacity: 0.55; }
+.md-typeset .nt-step-title {
+  display: block;
+  font-size: 0.68rem;
+  overflow-wrap: normal;
+  word-break: normal;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.md-typeset .nt-step-title::before {
+  content: counter(nt-step) ". ";
+}
+.md-typeset .nt-step-note {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.62rem;
+  line-height: 1.35;
+  opacity: 0.92;
+}
+.md-typeset .nt-step-state {
+  display: inline-block;
+  margin-top: 0.35rem;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0 0.4em;
+  border-radius: 1rem;
+  border: 1px solid currentColor;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 59.984375em) {
+  .md-typeset .nt-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .md-typeset .nt-roadmap { grid-template-columns: 1fr; }
+  .md-typeset .nt-stages { grid-template-columns: 1fr; }
+  .md-typeset .nt-flow { flex-direction: column; }
+  .md-typeset .nt-step,
+  .md-typeset .nt-step:first-child {
+    margin: 0 0 -0.45rem;
+    padding: 0.7rem 0.9rem 1.1rem;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 0.6rem), 50% 100%, 0 calc(100% - 0.6rem));
+  }
+  .md-typeset .nt-step:not(:first-child) { padding-top: 1.1rem; }
+  .md-typeset .nt-step:last-child {
+    margin-bottom: 0;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  .md-typeset .nt-hero h1 { font-size: 1.9rem; }
+}
 
 /* Penjelajah kalimat pilot */
 .pilot-filters {
