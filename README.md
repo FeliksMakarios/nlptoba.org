@@ -15,7 +15,7 @@ Situs ini tidak menyimpan salinan data penelitian. Setiap build mengambil berkas
 | Repo sumber | Isi yang ditampilkan |
 |---|---|
 | [batak-toba-korpus](https://github.com/FeliksMakarios/batak-toba-korpus) | Halaman korpus tahap 1 |
-| [batak-toba-corpus-v2](https://github.com/FeliksMakarios/batak-toba-corpus-v2) | Pedoman UD v1.0, 250 kalimat pilot, contoh pohon dependensi |
+| [batak-toba-corpus-v2](https://github.com/FeliksMakarios/batak-toba-corpus-v2) | Pedoman UD versi terbaru, 250 kalimat pilot, contoh pohon dependensi |
 
 ## Struktur
 

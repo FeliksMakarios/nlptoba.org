@@ -4,7 +4,7 @@ title: Kalimat pilot
 
 # 250 Kalimat Pilot
 
-Kalimat ini dianotasi secara ganda oleh dua anotator penutur Batak Toba mengikuti [pedoman v1.0](pedoman.md). Kalimat dipilih dari korpus revisi penyelarasan v1 (1.505 unit) dengan kriteria berikut:
+Kalimat ini dianotasi secara ganda oleh dua anotator penutur Batak Toba mengikuti [pedoman anotasi](pedoman.md). Kalimat dipilih dari korpus revisi penyelarasan v1 (1.505 unit) dengan kriteria berikut:
 
 1. Hanya unit berpenyelarasan 1-1 yang sudah lolos pemeriksaan rutin.
 2. Satu kalimat utuh per unit, 5 sampai 20 kata.

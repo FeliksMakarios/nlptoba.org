@@ -383,7 +383,7 @@
   border-radius: 0.2rem;
   background: var(--nt-card-bg);
 }
-.dep-svg { display: block; }
+.md-typeset .dep-svg { display: block; max-width: none; }
 .dep-arc { fill: none; stroke: var(--md-default-fg-color--light); stroke-width: 1.3; }
 .dep-head { fill: var(--md-default-fg-color--light); }
 .dep-label {

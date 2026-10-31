@@ -14,7 +14,7 @@ hide:
 <p class="nt-lead">Revitalising a low-resource language: building corpora and language models for Batak Toba with deep learning and transfer learning.</p>
 
 [Browse pilot sentences](anotasi-ud/kalimat-pilot.md){ .md-button .md-button--primary }
-[Read annotation guideline v1.0](anotasi-ud/pedoman.md){ .md-button }
+[Read the annotation guideline](anotasi-ud/pedoman.md){ .md-button }
 
 </div>
 
@@ -92,7 +92,7 @@ hide:
   <a class="nt-stage nt-y1" href="anotasi-ud/">
     <span class="nt-status nt-status--run">IN PROGRESS · 2026</span>
     <h3>Stage 2 · Universal Dependencies Annotation</h3>
-    <p>UD annotation guideline v1.0, 250 pilot sentences, and double annotation by two annotators since 5 October 2026.</p>
+    <p>UD annotation guideline v1.2, 250 pilot sentences, and double annotation by two annotators since 5 October 2026.</p>
     <span class="nt-more">View UD annotation →</span>
   </a>
 </div>
