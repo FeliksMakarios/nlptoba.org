@@ -14,7 +14,7 @@ hide:
 <p class="nt-lead">Revitalisasi bahasa berdaya rendah: pengembangan korpus dan model bahasa Batak Toba dengan pendekatan NLP berbasis deep learning dan transfer learning.</p>
 
 [Jelajahi kalimat pilot](anotasi-ud/kalimat-pilot.md){ .md-button .md-button--primary }
-[Baca pedoman anotasi v1.0](anotasi-ud/pedoman.md){ .md-button }
+[Baca pedoman anotasi](anotasi-ud/pedoman.md){ .md-button }
 
 </div>
 
@@ -92,7 +92,7 @@ hide:
   <a class="nt-stage nt-y1" href="anotasi-ud/">
     <span class="nt-status nt-status--run">BERJALAN · 2026</span>
     <h3>Tahap 2 · Anotasi Universal Dependencies</h3>
-    <p>Pedoman anotasi UD v1.0, 250 kalimat pilot, dan anotasi ganda oleh dua anotator sejak 5 Oktober 2026.</p>
+    <p>Pedoman anotasi UD v1.2, 250 kalimat pilot, dan anotasi ganda oleh dua anotator sejak 5 Oktober 2026.</p>
     <span class="nt-more">Lihat anotasi UD →</span>
   </a>
 </div>

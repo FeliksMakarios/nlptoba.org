@@ -1,38 +1,92 @@
-/* Identitas visual mengikuti peta jalan lima tahun pada proposal:
-   satu warna untuk setiap tahun penelitian. */
+/* Identitas visual: merah, putih, dan hitam khas Batak Toba (bonang manalu,
+   warna dasar gorga), dilembutkan menjadi marun, putih tulang, dan arang.
+   Lima warna tahun membentuk gradasi merah, putih, hitam. */
 :root {
-  --nt-y1: #5e5a86;
-  --nt-y2: #ddb887;
-  --nt-y3: #a9bb9b;
-  --nt-y4: #4a7a85;
-  --nt-y5: #7a6576;
+  --nt-y1: #8c2b25;
+  --nt-y2: #a9554a;
+  --nt-y3: #e8ddd0;
+  --nt-y4: #5b5250;
+  --nt-y5: #2a2221;
   --nt-on-dark: #ffffff;
-  --nt-on-light: #1f1f1f;
+  --nt-on-light: #1e1a19;
 }
 
 :root,
 [data-md-color-scheme="default"] {
-  --md-primary-fg-color: #3d3a5c;
-  --md-primary-fg-color--light: #5e5a86;
-  --md-primary-fg-color--dark: #2e2b47;
-  --md-accent-fg-color: #41707b;
-  --md-typeset-a-color: #41707b;
-  --nt-card-bg: #f7f6f9;
-  --nt-border: #e2e0ea;
-  --nt-done: #2f7d4f;
-  --nt-run: #8a6326;
+  --md-primary-fg-color: #6b1f1b;
+  --md-primary-fg-color--light: #8c2b25;
+  --md-primary-fg-color--dark: #4f1512;
+  --md-accent-fg-color: #9a2c23;
+  --md-typeset-a-color: #9a2c23;
+  --md-default-bg-color: #fbf8f4;
+  --nt-card-bg: #f3ece5;
+  --nt-border: #e4d8cc;
+  --nt-band-bg: #f3ece5;
+  --nt-band-ink: #1e1a19;
+  --nt-done: #2f6b45;
+  --nt-run: #9a2c23;
 }
 
 [data-md-color-scheme="slate"] {
-  --md-primary-fg-color: #2e2b47;
-  --md-primary-fg-color--light: #5e5a86;
-  --md-primary-fg-color--dark: #22203a;
-  --md-accent-fg-color: #8fc3cd;
-  --md-typeset-a-color: #8fc3cd;
-  --nt-card-bg: #24232f;
-  --nt-border: #393747;
-  --nt-done: #86d0a4;
-  --nt-run: #ddb887;
+  --md-primary-fg-color: #3a1512;
+  --md-primary-fg-color--light: #6b1f1b;
+  --md-primary-fg-color--dark: #2a0f0d;
+  --md-accent-fg-color: #e8958a;
+  --md-typeset-a-color: #e8958a;
+  --md-default-bg-color: #181414;
+  --nt-card-bg: #221d1c;
+  --nt-border: #3a3130;
+  --nt-band-bg: #221d1c;
+  --nt-band-ink: #000000;
+  --nt-done: #8fcfa4;
+  --nt-run: #e8958a;
+}
+
+/* Pita ornamen geometris di bawah header, terinspirasi bingkai gorga.
+   Motifnya sengaja generik (belah ketupat dan silang), bukan salinan gorga tertentu. */
+.md-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -7px;
+  height: 7px;
+  background-color: var(--nt-band-bg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='7' viewBox='0 0 22 7'%3E%3Cpath d='M5.5 0.8 L9.2 3.5 L5.5 6.2 L1.8 3.5 Z' fill='none' stroke='%231e1a19' stroke-width='1'/%3E%3Cpath d='M13.5 1 L18.5 6 M18.5 1 L13.5 6' stroke='%239a2c23' stroke-width='1.2'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  border-bottom: 1px solid var(--nt-band-ink);
+}
+
+/* Tombol sekunder memakai warna tautan agar terbaca di mode terang dan gelap */
+.md-typeset .md-button:not(.md-button--primary) {
+  color: var(--md-typeset-a-color);
+  border-color: currentColor;
+}
+
+/* Kotak info dan lipatan (details) memakai warna aksen, bukan biru bawaan tema */
+.md-typeset .admonition,
+.md-typeset details,
+.md-typeset .admonition.note,
+.md-typeset details.note,
+.md-typeset .admonition.info,
+.md-typeset details.info {
+  border-color: var(--md-accent-fg-color);
+}
+.md-typeset .admonition-title,
+.md-typeset summary,
+.md-typeset .note > .admonition-title,
+.md-typeset .note > summary,
+.md-typeset .info > .admonition-title,
+.md-typeset .info > summary {
+  background-color: color-mix(in srgb, var(--md-accent-fg-color) 9%, transparent);
+}
+.md-typeset .admonition-title::before,
+.md-typeset summary::before,
+.md-typeset .note > .admonition-title::before,
+.md-typeset .note > summary::before,
+.md-typeset .info > .admonition-title::before,
+.md-typeset .info > summary::before {
+  background-color: var(--md-accent-fg-color);
 }
 
 /* Penanda status */
@@ -167,7 +221,7 @@
 }
 
 .nt-y1 { --nt-year: var(--nt-y1); --nt-year-ink: var(--nt-on-dark); }
-.nt-y2 { --nt-year: var(--nt-y2); --nt-year-ink: var(--nt-on-light); }
+.nt-y2 { --nt-year: var(--nt-y2); --nt-year-ink: var(--nt-on-dark); }
 .nt-y3 { --nt-year: var(--nt-y3); --nt-year-ink: var(--nt-on-light); }
 .nt-y4 { --nt-year: var(--nt-y4); --nt-year-ink: var(--nt-on-dark); }
 .nt-y5 { --nt-year: var(--nt-y5); --nt-year-ink: var(--nt-on-dark); }
@@ -383,7 +437,7 @@
   border-radius: 0.2rem;
   background: var(--nt-card-bg);
 }
-.dep-svg { display: block; }
+.md-typeset .dep-svg { display: block; max-width: none; }
 .dep-arc { fill: none; stroke: var(--md-default-fg-color--light); stroke-width: 1.3; }
 .dep-head { fill: var(--md-default-fg-color--light); }
 .dep-label {

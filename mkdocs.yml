@@ -63,7 +63,7 @@ plugins:
             Korpus (Tahap 1): Corpus (Stage 1)
             Anotasi UD (Tahap 2): UD Annotation (Stage 2)
             Ringkasan: Overview
-            Pedoman v1.0: Guideline v1.0
+            Pedoman anotasi: Annotation guideline
             Kalimat pilot: Pilot sentences
             Pohon dependensi: Dependency trees
             Tentang: About
@@ -73,7 +73,7 @@ nav:
   - Korpus (Tahap 1): korpus/index.md
   - Anotasi UD (Tahap 2):
       - Ringkasan: anotasi-ud/index.md
-      - Pedoman v1.0: anotasi-ud/pedoman.md
+      - Pedoman anotasi: anotasi-ud/pedoman.md
       - Kalimat pilot: anotasi-ud/kalimat-pilot.md
       - Pohon dependensi: anotasi-ud/pohon.md
   - Tentang: tentang.md

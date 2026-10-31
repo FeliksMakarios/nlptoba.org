@@ -16,8 +16,8 @@ import shutil
 import subprocess
 from pathlib import Path
 
-PEDOMAN_MD = "anotasi-ud/pedoman/pedoman-anotasi-ud-v1.0.md"
-PEDOMAN_DOCX = "anotasi-ud/pedoman/Pedoman_Anotasi_UD_BatakToba_v1.0.docx"
+PEDOMAN_DIR = "anotasi-ud/pedoman"
+PEDOMAN_REPO = "https://github.com/FeliksMakarios/batak-toba-corpus-v2/tree/main/anotasi-ud/pedoman/"
 PILOT_CSV = "anotasi-ud/pilot/daftar-250-kalimat-pilot.csv"
 PILOT_TEMPLATE = "anotasi-ud/pilot/btk_pilot_250_template.conllu"
 
@@ -31,6 +31,30 @@ def commit_of(repo: Path) -> str:
         return out.stdout.strip()
     except (subprocess.CalledProcessError, FileNotFoundError):
         return ""
+
+
+def latest_pedoman(v2: Path):
+    """Cari pedoman versi tertinggi di folder pedoman (bukan di subfolder arsip)."""
+    found = []
+    for md in (v2 / PEDOMAN_DIR).glob("pedoman-anotasi-ud-v*.md"):
+        m = re.fullmatch(r"pedoman-anotasi-ud-v(\d+(?:\.\d+)*)\.md", md.name)
+        if m:
+            found.append((tuple(int(x) for x in m.group(1).split(".")), m.group(1), md))
+    if not found:
+        raise SystemExit("Pedoman tidak ditemukan di " + PEDOMAN_DIR)
+    _, version, md = max(found)
+    docx = md.with_name(f"Pedoman_Anotasi_UD_BatakToba_v{version}.docx")
+    return version, md, docx
+
+
+def absolutize_links(text: str, keep: str) -> str:
+    """Tautan relatif selain berkas Word diarahkan ke GitHub agar tetap berlaku di situs."""
+    def fix(m):
+        target = m.group(2)
+        if target.startswith(("http:", "https:", "#", "mailto:")) or target == keep:
+            return m.group(0)
+        return f"{m.group(1)}({PEDOMAN_REPO}{target})"
+    return re.sub(r"(\[[^\]]*\])\(([^)\s]+)\)", fix, text)
 
 
 def unescape_cell(cell: str) -> str:
@@ -102,14 +126,18 @@ def main() -> None:
     data.mkdir(parents=True, exist_ok=True)
     ud = args.docs / "anotasi-ud"
 
-    pedoman = (args.v2 / PEDOMAN_MD).read_text(encoding="utf-8")
-    (ud / "pedoman.md").write_text(pedoman, encoding="utf-8")
-    shutil.copy2(args.v2 / PEDOMAN_DOCX, ud / Path(PEDOMAN_DOCX).name)
+    version, pedoman_md, pedoman_docx = latest_pedoman(args.v2)
+    pedoman = pedoman_md.read_text(encoding="utf-8")
+    (ud / "pedoman.md").write_text(absolutize_links(pedoman, pedoman_docx.name), encoding="utf-8")
+    for old in ud.glob("Pedoman_Anotasi_UD_BatakToba_v*.docx"):
+        old.unlink()
+    shutil.copy2(pedoman_docx, ud / pedoman_docx.name)
     shutil.copy2(args.v2 / PILOT_CSV, data / "kalimat-pilot.csv")
     shutil.copy2(args.v2 / PILOT_TEMPLATE, data / "templat-pilot.conllu")
     (data / "contoh-pedoman.conllu").write_text(examples_to_conllu(pedoman), encoding="utf-8")
 
     sumber = {
+        "versi_pedoman": version,
         "batak-toba-corpus-v2": commit_of(args.v2),
         "batak-toba-korpus": commit_of(args.korpus),
     }

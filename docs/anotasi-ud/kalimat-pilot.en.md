@@ -4,7 +4,7 @@ title: Pilot sentences
 
 # 250 Pilot Sentences
 
-These sentences are double annotated by two native Batak Toba annotators following [guideline v1.0](pedoman.md). They were selected from the alignment-revised corpus v1 (1,505 units) with these criteria:
+These sentences are double annotated by two native Batak Toba annotators following the [annotation guideline](pedoman.md). They were selected from the alignment-revised corpus v1 (1,505 units) with these criteria:
 
 1. Only 1-1 aligned units that passed routine review.
 2. One complete sentence per unit, 5 to 20 words.

@@ -24,16 +24,16 @@ Before this project, Batak Toba had no treebank, no part-of-speech or dependency
 <div class="nt-flow">
   <div class="nt-step nt-y1"><span class="nt-step-title">Stage 1 corpus</span><span class="nt-step-note">Multi-genre corpus from the 2025 grant.</span><span class="nt-step-state">Done</span></div>
   <div class="nt-step nt-y2"><span class="nt-step-title">Decision synthesis</span><span class="nt-step-note">Review of UD v2 and the Indonesian, Tagalog, and Cebuano UD guidelines.</span><span class="nt-step-state">Done</span></div>
-  <div class="nt-step nt-y3"><span class="nt-step-title">Guideline v1.0</span><span class="nt-step-note">Guideline and labelled examples, including voice arguments.</span><span class="nt-step-state">Done</span></div>
+  <div class="nt-step nt-y3"><span class="nt-step-title">Guideline v1.0 to v1.2</span><span class="nt-step-note">Guideline and labelled examples, updated with annotator feedback.</span><span class="nt-step-state">Done</span></div>
   <div class="nt-step nt-y4"><span class="nt-step-title">Pilot annotation</span><span class="nt-step-note">250 sentences by two annotators, since 5 October 2026.</span><span class="nt-step-state">In progress</span></div>
-  <div class="nt-step nt-y5 is-plan"><span class="nt-step-title">Evaluation and revision</span><span class="nt-step-note">Inter-annotator agreement and guideline v1.1, November 2026.</span><span class="nt-step-state">Planned</span></div>
+  <div class="nt-step nt-y5 is-plan"><span class="nt-step-title">Evaluation and revision</span><span class="nt-step-note">Inter-annotator agreement and guideline v2.0, November 2026.</span><span class="nt-step-state">Planned</span></div>
 </div>
 
 ## Outputs
 
 <div class="grid cards" markdown>
 
--   :material-book-education:{ .lg .middle } **Annotation guideline v1.0**
+-   :material-book-education:{ .lg .middle } **Annotation guideline v1.2**
 
     ---
 
@@ -67,7 +67,7 @@ Before this project, Batak Toba had no treebank, no part-of-speech or dependency
 
 </div>
 
-## Key decisions in guideline v1.0
+## Key decisions in the guideline
 
 Word classes and constructions follow *A Grammar of Toba-Batak* (Nababan, 1981).
 
@@ -78,6 +78,10 @@ Word classes and constructions follow *A Grammar of Toba-Batak* (Nababan, 1981).
 5. The predicate particles *do*, *ma*, *pe* are `PART` with the relation `discourse`.
 6. The attributive marker *na* is `PART` with the relation `mark`.
 7. Pronominal suffixes (*-na*, *-mu*, *-hu/-ku*) are not split off and are recorded with `Person[psor]` and `Number[psor]`.
+8. Compound and complex sentences still have a single root. Every word in a clause points to the predicator of its own clause.
+9. *laos* is always `ADV` with the relation `advmod` to the predicator of its clause.
+
+Items 8 and 9 were added in version 1.1 based on annotator feedback. Version 1.2 adds a numbered glossary and a term index without changing any labelling rule. Version 1.0 is kept as an [archive](https://github.com/FeliksMakarios/batak-toba-corpus-v2/tree/main/anotasi-ud/pedoman/arsip).
 
 ## License and citation
 
