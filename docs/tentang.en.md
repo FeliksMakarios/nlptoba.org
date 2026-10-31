@@ -24,6 +24,7 @@ The project involves a language expert and native Batak Toba annotators. Their n
 | Stage 1 corpus | CC BY 4.0 |
 | Stage 2 guideline and data | CC BY-SA 4.0 |
 | Scripts in the research repositories | MIT |
+| Source code of this site | MIT |
 
 This site republishes the research repositories without changing their licenses.
 

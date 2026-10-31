@@ -4,6 +4,10 @@ Kode situs proyek NLP Batak Toba yang terbit di <https://nlptoba.org>. Situs dib
 
 Source code of the Batak Toba NLP project site, published at <https://nlptoba.org>.
 
+## Lisensi
+
+Kode situs (konfigurasi, skrip, CSS, dan JavaScript) berlisensi MIT, lihat [LICENSE](LICENSE). Data dan pedoman yang ditampilkan tetap mengikuti lisensi repo sumbernya: korpus tahap 1 CC BY 4.0, pedoman dan data tahap 2 CC BY-SA 4.0.
+
 ## Prinsip
 
 Situs ini tidak menyimpan salinan data penelitian. Setiap build mengambil berkas terbaru dari repo penelitian, sehingga repo penelitian tetap menjadi satu-satunya sumber kebenaran.

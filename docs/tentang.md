@@ -24,6 +24,7 @@ Penelitian ini melibatkan narasumber ahli bahasa dan anotator penutur Batak Toba
 | Korpus tahap 1 | CC BY 4.0 |
 | Pedoman dan data tahap 2 | CC BY-SA 4.0 |
 | Skrip pada repositori penelitian | MIT |
+| Kode situs ini | MIT |
 
 Situs ini menampilkan ulang isi repositori penelitian tanpa mengubah lisensinya.
 
