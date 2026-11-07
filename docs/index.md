@@ -19,9 +19,9 @@ hide:
 </div>
 
 <div class="nt-stats">
-  <div class="nt-stat"><strong>112.340</strong><span>token Batak Toba dalam korpus tahap 1</span></div>
+  <div class="nt-stat nt-stat--pair"><strong>97.952</strong><span>kata Batak Toba, tanda baca tidak dihitung</span><strong>112.465</strong><span>token NLTK Batak Toba, tanda baca dihitung</span></div>
   <div class="nt-stat"><strong>5</strong><span>genre teks, dari cerita rakyat sampai media daring</span></div>
-  <div class="nt-stat"><strong>1.505</strong><span>unit korpus paralel hasil audit penyelarasan</span></div>
+  <div class="nt-stat"><strong>1.542</strong><span>pasangan kalimat paralel Batak Toba dan Indonesia, 182 di antaranya divalidasi manusia</span></div>
   <div class="nt-stat"><strong>250</strong><span>kalimat pilot untuk anotasi Universal Dependencies</span></div>
 </div>
 

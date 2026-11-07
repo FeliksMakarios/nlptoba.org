@@ -175,6 +175,13 @@
   font-size: 0.7rem;
   color: var(--md-default-fg-color--light);
 }
+/* Dua angka dalam satu kotak, misalnya kata dan token NLTK */
+.md-typeset .nt-stat--pair span {
+  display: block;
+}
+.md-typeset .nt-stat--pair span + strong {
+  margin-top: 0.5rem;
+}
 
 /* Peta jalan lima tahun */
 .md-typeset .nt-roadmap {

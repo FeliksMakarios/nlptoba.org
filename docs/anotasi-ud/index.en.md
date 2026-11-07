@@ -57,13 +57,13 @@ Before this project, Batak Toba had no treebank, no part-of-speech or dependency
 
     [:octicons-arrow-right-24: View trees](pohon.md)
 
--   :material-table-check:{ .lg .middle } **Alignment-revised corpus v1**
+-   :material-table-check:{ .lg .middle } **Sentence-level parallel corpus**
 
     ---
 
-    The parallel corpus after an alignment audit: 1,505 units from 1,494 original rows.
+    Working version v1 (1,505 units) has been superseded by the final corpus of 1,542 pairs, 182 of them human-validated.
 
-    [:octicons-arrow-right-24: View on GitHub](https://github.com/FeliksMakarios/batak-toba-corpus-v2/tree/main/anotasi-ud/korpus-revisi)
+    [:octicons-arrow-right-24: View the final corpus](../korpus/index.md#sentence-level-parallel-corpus)
 
 </div>
 

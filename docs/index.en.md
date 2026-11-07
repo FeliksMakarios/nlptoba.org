@@ -19,9 +19,9 @@ hide:
 </div>
 
 <div class="nt-stats">
-  <div class="nt-stat"><strong>112,340</strong><span>Batak Toba tokens in the Stage 1 corpus</span></div>
+  <div class="nt-stat nt-stat--pair"><strong>97,952</strong><span>Batak Toba words, punctuation not counted</span><strong>112,465</strong><span>Batak Toba NLTK tokens, punctuation counted</span></div>
   <div class="nt-stat"><strong>5</strong><span>text genres, from folktales to online media</span></div>
-  <div class="nt-stat"><strong>1,505</strong><span>parallel corpus units after alignment audit</span></div>
+  <div class="nt-stat"><strong>1,542</strong><span>Batak Toba and Indonesian parallel sentence pairs, 182 of them human-validated</span></div>
   <div class="nt-stat"><strong>250</strong><span>pilot sentences for Universal Dependencies annotation</span></div>
 </div>
 
