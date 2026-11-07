@@ -57,13 +57,13 @@ Sampai penelitian ini dimulai, Batak Toba belum memiliki treebank, anotasi kelas
 
     [:octicons-arrow-right-24: Lihat pohon](pohon.md)
 
--   :material-table-check:{ .lg .middle } **Korpus revisi penyelarasan v1**
+-   :material-table-check:{ .lg .middle } **Korpus paralel tingkat kalimat**
 
     ---
 
-    Korpus paralel hasil audit penyelarasan: 1.505 unit dari 1.494 baris asal.
+    Versi kerja v1 (1.505 unit) menjadi sumber 250 kalimat pilot. Sebagai korpus paralel, versi ini sudah digantikan oleh korpus final berisi 1.542 pasangan, 182 di antaranya divalidasi manusia.
 
-    [:octicons-arrow-right-24: Lihat di GitHub](https://github.com/FeliksMakarios/batak-toba-corpus-v2/tree/main/anotasi-ud/korpus-revisi)
+    [:octicons-arrow-right-24: Lihat korpus final](../korpus/index.md#korpus-paralel-tingkat-kalimat)
 
 </div>
 
