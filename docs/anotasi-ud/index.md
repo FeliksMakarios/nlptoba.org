@@ -61,7 +61,7 @@ Sampai penelitian ini dimulai, Batak Toba belum memiliki treebank, anotasi kelas
 
     ---
 
-    Versi kerja v1 (1.505 unit) sudah digantikan oleh korpus final berisi 1.542 pasangan, 182 di antaranya divalidasi manusia.
+    Versi kerja v1 (1.505 unit) menjadi sumber 250 kalimat pilot. Sebagai korpus paralel, versi ini sudah digantikan oleh korpus final berisi 1.542 pasangan, 182 di antaranya divalidasi manusia.
 
     [:octicons-arrow-right-24: Lihat korpus final](../korpus/index.md#korpus-paralel-tingkat-kalimat)
 

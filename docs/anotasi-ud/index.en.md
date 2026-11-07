@@ -61,7 +61,7 @@ Before this project, Batak Toba had no treebank, no part-of-speech or dependency
 
     ---
 
-    Working version v1 (1,505 units) has been superseded by the final corpus of 1,542 pairs, 182 of them human-validated.
+    Working version v1 (1,505 units) is the source of the 250 pilot sentences. As a parallel corpus, it has been superseded by the final corpus of 1,542 pairs, 182 of them human-validated.
 
     [:octicons-arrow-right-24: View the final corpus](../korpus/index.md#sentence-level-parallel-corpus)
 
