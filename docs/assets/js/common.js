@@ -73,7 +73,38 @@
     });
   }
 
+  // Kotak "Versi data di situs ini" di halaman Kabar, dibaca dari sumber.json hasil build.
+  function sumber() {
+    var box = document.getElementById("nt-sumber");
+    if (!box) return;
+    var S = {
+      id: { guide: "Versi pedoman", v2: "Commit batak-toba-corpus-v2", korpus: "Commit batak-toba-korpus",
+            built: "Situs dibangun", fail: "Data versi tidak dapat dimuat." },
+      en: { guide: "Guideline version", v2: "batak-toba-corpus-v2 commit", korpus: "batak-toba-korpus commit",
+            built: "Site built", fail: "Version data could not be loaded." }
+    }[lang()];
+    fetch(dataUrl("sumber.json"))
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (d) {
+        function commit(repo, sha) {
+          return sha ? el("a", { href: "https://github.com/FeliksMakarios/" + repo + "/commit/" + sha },
+            [el("code", { text: sha.slice(0, 7) })]) : el("span", { text: "-" });
+        }
+        var rows = [
+          [S.guide, el("span", { text: d.versi_pedoman || "-" })],
+          [S.v2, commit("batak-toba-corpus-v2", d["batak-toba-corpus-v2"])],
+          [S.korpus, commit("batak-toba-korpus", d["batak-toba-korpus"])]
+        ];
+        if (d.tanggal_build) rows.push([S.built, el("span", { text: d.tanggal_build })]);
+        box.appendChild(el("dl", { class: "nt-facts" }, [].concat.apply([], rows.map(function (r) {
+          return [el("dt", { text: r[0] }), el("dd", {}, [r[1]])];
+        }))));
+      })
+      .catch(function () { box.textContent = S.fail; });
+  }
+
   function init() {
+    sumber();
     var search = document.querySelector(".md-search");
     if (search && !search.getAttribute("aria-label")) search.setAttribute("aria-label", A.search);
     markScrollable();

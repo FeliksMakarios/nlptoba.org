@@ -1,4 +1,5 @@
 ---
+description: "Batak Toba NLP project at Universitas Pelita Harapan: Batak Toba and Indonesian text corpus, Universal Dependencies annotation guideline, and a five-year roadmap."
 title: Home
 hide:
   - navigation

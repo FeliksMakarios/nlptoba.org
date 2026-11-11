@@ -1,4 +1,5 @@
 ---
+description: "Peneliti, pendanaan, lisensi, cara mengutip, dan cara memberi masukan untuk proyek NLP Batak Toba."
 title: Tentang
 ---
 
@@ -27,6 +28,28 @@ Penelitian ini melibatkan narasumber ahli bahasa dan anotator penutur Batak Toba
 | Kode situs ini | MIT |
 
 Situs ini menampilkan ulang isi repositori penelitian tanpa mengubah lisensinya.
+
+## Cara mengutip
+
+Bila memakai korpus atau pedoman ini, mohon kutip repositori sumbernya. Untuk pedoman, sebutkan juga versi yang dipakai, yang tercantum di halaman [Kabar](kabar.md). Tombol salin ada di pojok kanan atas blok berikut.
+
+```bibtex
+@misc{samosir2025korpus,
+  author       = {Samosir, Feliks Victor Parningotan},
+  title        = {Korpus Bahasa Batak Toba},
+  year         = {2025},
+  publisher    = {Universitas Pelita Harapan},
+  howpublished = {\url{https://github.com/FeliksMakarios/batak-toba-korpus}}
+}
+
+@misc{samosir2026pedoman,
+  author       = {Samosir, Feliks Victor Parningotan},
+  title        = {batak-toba-corpus-v2: Pedoman Anotasi Universal Dependencies untuk Bahasa Batak Toba},
+  year         = {2026},
+  publisher    = {Universitas Pelita Harapan},
+  howpublished = {\url{https://github.com/FeliksMakarios/batak-toba-corpus-v2}}
+}
+```
 
 ## Kontribusi dan masukan
 

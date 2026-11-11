@@ -1,4 +1,5 @@
 ---
+description: "Browse the 250 Batak Toba pilot sentences for Universal Dependencies annotation, filtered by genre, batch, construction, or word."
 title: Pilot sentences
 ---
 

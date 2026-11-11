@@ -87,6 +87,10 @@ plugins:
             Korpus (Tahap 1): Corpus (Stage 1)
             Anotasi UD (Tahap 2): UD Annotation (Stage 2)
             Ringkasan: Overview
+            Ringkasan korpus: Corpus overview
+            Korpus paralel: Parallel corpus
+            Berkas dan dokumentasi: Files and documentation
+            Kabar: News
             Pedoman anotasi: Annotation guideline
             Kalimat pilot: Pilot sentences
             Pohon dependensi: Dependency trees
@@ -94,16 +98,24 @@ plugins:
 
 nav:
   - Beranda: index.md
-  - Korpus (Tahap 1): korpus/index.md
+  - Korpus (Tahap 1):
+      - Ringkasan korpus: korpus/index.md
+      - Korpus paralel: korpus/paralel.md
+      - Berkas dan dokumentasi: korpus/berkas.md
   - Anotasi UD (Tahap 2):
       - Ringkasan: anotasi-ud/index.md
       - Pedoman anotasi: anotasi-ud/pedoman.md
       - Kalimat pilot: anotasi-ud/kalimat-pilot.md
       - Pohon dependensi: anotasi-ud/pohon.md
+  - Kabar: kabar.md
   - Tentang: tentang.md
 
 hooks:
   - hooks/indeks_pencarian.py
+
+extra:
+  # Alamat utama situs, dipakai untuk gambar pratinjau dan data terstruktur.
+  situs: https://nlptoba.org/
 
 extra_css:
   - assets/css/fonts.css

@@ -1,4 +1,6 @@
 ---
+dataset: korpus
+description: "Stage 1 Batak Toba and Indonesian text corpus: 97,952 Batak Toba words across five genres, counted with three methods, with genre distribution and limitations."
 title: Batak Toba Corpus (Stage 1)
 ---
 
@@ -84,56 +86,6 @@ Counts depend on how punctuation is treated, so token counts are reported with t
 
 The religious domain is strongly dominant. The HKBP agenda, prayers, and the Bible account for about 75% of Batak Toba words, and the HKBP agenda alone accounts for 59% of the words in the multi-genre sub-corpus.
 
-## Sentence-level parallel corpus
-
-`btb_parallel_sentence.csv` holds Batak Toba and Indonesian sentence pairs from the multi-genre sub-corpus, excluding the HKBP agenda. Pairs were built by automatic alignment and auditing. The 145 pairs flagged as problematic were then judged by two raters who are different from the two translators, and their disagreements were resolved by adjudication.
-
-| Measure | Value |
-|---|---:|
-| Pairs | 1,542 |
-| Documents | 97 |
-| Batak Toba / Indonesian words | 24,377 / 21,486 |
-| Human-validated pairs (`validasi_manusia = ya`) | 182 (11.8%) |
-| Automatically aligned pairs that passed the audit | 1,360 |
-
-Most human-validated pairs come from folktales (47) and poems (45). Prayers and proverbs have almost none.
-
-### Inter-annotator agreement
-
-Agreement is measured with Cohen's kappa on the 145 flagged pairs. Each rater chose one decision per pair, such as accepting the pair, revising the alignment, or revising the translation.
-
-| Scenario | Agreement | Cohen's kappa |
-|---|---:|---:|
-| Original labels of both raters | 37.9% | 0.088 |
-| After label reconciliation by rater A (basis of adjudication) | 46.2% | **0.170** (95% CI 0.06 to 0.28) |
-| Reconciliation rule applied to both raters | 51.7% | 0.156 |
-| As above, ignoring punctuation-only differences | 49.0% | 0.183 |
-
-**What the figures mean**
-
-1. **Slight agreement.** On the Landis and Koch (1977) scale, kappa between 0.00 and 0.20 is slight. Even the upper bound of the 95% confidence interval is only 0.28, well below the threshold for moderate agreement (0.41).
-2. **High-priority pairs are the hardest.** On the 89 high-priority pairs, kappa is only 0.029, close to chance agreement. On the 56 medium-priority pairs, it rises to 0.347.
-3. **Raters agree more on whether a fix is needed.** When decisions are collapsed to "accept" or "fix", kappa rises to 0.295. Most disagreement is about the kind of fix.
-4. **Two main sources of disagreement.** Of the 78 pairs without agreement, 29 fall on the boundary between accepting a pair and revising its translation, and 21 swap alignment revision with translation revision. Rater B also used the `fragment_policy` category 12 times, while rater A never used it. This pattern suggests that the decision categories need sharper definitions.
-5. **The reconciliation rule does not change the conclusion.** All four scenarios give kappa between 0.088 and 0.183, all of them slight.
-6. **What this means for use.** The parallel corpus relies on adjudication rather than direct agreement. Only 182 pairs can be considered human-validated, and the other 1,360 pairs are better treated as silver data. The corpus cannot be treated as gold-standard as a whole.
-7. **Relevance for Stage 2.** These findings underline the need for clear category definitions and boundary-case examples before double annotation starts, including for the [Universal Dependencies annotation](../anotasi-ud/index.md).
-
-## Data files
-
-| File | Contents | Status |
-|---|---|---|
-| [`btb_multigenre.csv`](https://github.com/FeliksMakarios/batak-toba-korpus/blob/main/data/btb_multigenre.csv) | Multi-genre corpus, version 2, 104 documents | Available |
-| [`btb_parallel_sentence.csv`](https://github.com/FeliksMakarios/batak-toba-korpus/blob/main/data/btb_parallel_sentence.csv) | Sentence-level parallel corpus, 1,542 pairs | Available |
-| [`iaa/`](https://github.com/FeliksMakarios/batak-toba-korpus/tree/main/data/iaa) | Inter-annotator agreement report, confusion matrix, sensitivity analysis, and final decisions for 145 pairs | Available |
-| `btb_bible.csv` | Parallel Bible corpus, one chapter per book | Not yet available. Its Indonesian side uses the Terjemahan Baru (1974) translation by the Indonesian Bible Society, and redistribution permission has not yet been confirmed. |
-
-## Data schema
-
-Version 2 of `btb_multigenre.csv` has nine columns: `doc_id`, `title`, `text_bt`, `text_id`, `genre`, `subgenre`, `source_link`, `notes`, and `is_parallel`. The `doc_id` values run from `mg_001` to `mg_104` and are also used in the parallel corpus. `btb_parallel_sentence.csv` has its own columns, including `pair_id`, `doc_id`, `toba_final`, `indo_final`, `review_status`, `gold_decision`, and `validasi_manusia`.
-
-Each column is described in [metadata/skema-kolom.md](https://github.com/FeliksMakarios/batak-toba-korpus/blob/main/metadata/skema-kolom.md) (in Indonesian) and [data/README.md](https://github.com/FeliksMakarios/batak-toba-korpus/blob/main/data/README.md).
-
 ## Limitations
 
 1. The religious domain is strongly dominant, at about 75% of Batak Toba words.
@@ -142,13 +94,27 @@ Each column is described in [metadata/skema-kolom.md](https://github.com/FeliksM
 4. Oral data is not yet available.
 5. The corpus has no linguistic annotation yet. Universal Dependencies annotation is under way in [Stage 2](../anotasi-ud/index.md).
 
-## Documentation (in Indonesian)
+## More pages
 
-1. [Technical report](https://github.com/FeliksMakarios/batak-toba-korpus/blob/main/docs/laporan-teknis.md)
-2. [Data collection and curation](https://github.com/FeliksMakarios/batak-toba-korpus/blob/main/docs/pengumpulan-data.md)
-3. [Data provenance, license, and ethics statement](https://github.com/FeliksMakarios/batak-toba-korpus/blob/main/docs/pernyataan-data.md)
-4. [Corpus processing flow diagram](https://github.com/FeliksMakarios/batak-toba-korpus/blob/main/docs/peta-alur-korpus.svg)
-5. [Full-flow notebook, including inter-annotator agreement and adjudication](https://github.com/FeliksMakarios/batak-toba-korpus/blob/main/notebooks/alur_lengkap_korpus_batak_toba.ipynb)
+<div class="grid cards" markdown>
+
+-   :material-swap-horizontal:{ .lg .middle } **Parallel corpus and inter-annotator agreement**
+
+    ---
+
+    1,542 Batak Toba and Indonesian sentence pairs, 182 of them human-validated, with an interpretation of kappa 0.170.
+
+    [:octicons-arrow-right-24: View the parallel corpus](paralel.md)
+
+-   :material-download:{ .lg .middle } **Data files, schema, and documentation**
+
+    ---
+
+    The CSV files available, the columns of each file, and links to the technical report.
+
+    [:octicons-arrow-right-24: View the files](berkas.md)
+
+</div>
 
 ## License and citation
 

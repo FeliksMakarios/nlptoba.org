@@ -1,4 +1,6 @@
 ---
+dataset: korpus
+description: "Korpus teks Batak Toba dan Indonesia tahap 1: 97.952 kata Batak Toba dari lima genre, dihitung dengan tiga metode, beserta sebaran genre dan keterbatasannya."
 title: Korpus Batak Toba (Tahap 1)
 ---
 
@@ -84,56 +86,6 @@ Hasil hitungan bergantung pada perlakuan terhadap tanda baca. Karena itu jumlah 
 
 Domain keagamaan sangat dominan. Agenda HKBP, doa, dan Alkitab mencakup sekitar 75% kata Batak Toba, dan Agenda HKBP saja mencakup 59% kata sub-korpus multi-genre.
 
-## Korpus paralel tingkat kalimat
-
-Berkas `btb_parallel_sentence.csv` memuat pasangan kalimat Batak Toba dan Indonesia dari sub-korpus multi-genre, tanpa Agenda HKBP. Pasangan dibentuk dengan penyelarasan otomatis dan audit. Sebanyak 145 pasangan yang ditandai bermasalah kemudian dinilai oleh dua penilai yang berbeda dari kedua penerjemah, dan perbedaan keputusan mereka diselesaikan melalui adjudikasi.
-
-| Ukuran | Nilai |
-|---|---:|
-| Pasangan | 1.542 |
-| Dokumen | 97 |
-| Kata Batak Toba / Indonesia | 24.377 / 21.486 |
-| Pasangan divalidasi manusia (`validasi_manusia = ya`) | 182 (11,8%) |
-| Pasangan hasil penyelarasan otomatis yang lolos audit | 1.360 |
-
-Pasangan tervalidasi manusia paling banyak berasal dari cerita rakyat (47) dan puisi (45). Doa dan peribahasa hampir tidak memilikinya.
-
-### Kesepakatan antaranotator
-
-Kesepakatan diukur dengan Cohen's kappa pada 145 pasangan yang ditandai. Setiap penilai memilih satu keputusan untuk setiap pasangan, misalnya menerima pasangan, merevisi penyelarasan, atau merevisi terjemahan.
-
-| Skenario | Kesepakatan | Cohen's kappa |
-|---|---:|---:|
-| Label asli kedua penilai | 37,9% | 0,088 |
-| Setelah rekonsiliasi label penilai A (dasar adjudikasi) | 46,2% | **0,170** (IK95% 0,06 sampai 0,28) |
-| Aturan rekonsiliasi diterapkan ke kedua penilai | 51,7% | 0,156 |
-| Seperti di atas, dengan perbedaan tanda baca diabaikan | 49,0% | 0,183 |
-
-**Tafsir angka**
-
-1. **Tergolong sangat lemah.** Pada skala Landis dan Koch (1977), kappa 0,00 sampai 0,20 tergolong sangat lemah. Batas atas interval kepercayaan 95% pun hanya 0,28, masih jauh di bawah ambang kesepakatan sedang (0,41).
-2. **Pasangan prioritas tinggi paling sulit.** Pada 89 pasangan prioritas tinggi, kappa hanya 0,029, hampir setara dengan kesepakatan karena kebetulan. Pada 56 pasangan prioritas sedang, kappa naik menjadi 0,347.
-3. **Penilai lebih sepakat tentang perlu tidaknya perbaikan.** Bila keputusan disederhanakan menjadi "terima" atau "perbaiki", kappa naik menjadi 0,295. Ketidaksepakatan terbesar justru terletak pada jenis perbaikannya.
-4. **Dua sumber ketidaksepakatan utama.** Dari 78 pasangan yang tidak disepakati, 29 berada di batas antara menerima pasangan dan merevisi terjemahan, dan 21 tertukar antara revisi penyelarasan dan revisi terjemahan. Penilai B juga memakai kategori `fragment_policy` sebanyak 12 kali, sedangkan penilai A tidak pernah memakainya. Pola ini menunjukkan bahwa definisi kategori keputusan perlu dipertegas.
-5. **Aturan rekonsiliasi tidak mengubah kesimpulan.** Keempat skenario menghasilkan kappa 0,088 sampai 0,183, dan semuanya tergolong sangat lemah.
-6. **Implikasi pemakaian.** Korpus paralel bersandar pada adjudikasi, bukan pada kesepakatan langsung. Hanya 182 pasangan dapat dianggap tervalidasi manusia, sedangkan 1.360 pasangan lainnya lebih tepat diperlakukan sebagai data silver. Korpus ini belum dapat dianggap gold-standard secara keseluruhan.
-7. **Relevansi bagi tahap 2.** Temuan ini menegaskan pentingnya definisi kategori yang tegas dan contoh kasus batas sebelum anotasi ganda dimulai, termasuk pada [anotasi Universal Dependencies](../anotasi-ud/index.md).
-
-## Berkas data
-
-| Berkas | Isi | Status |
-|---|---|---|
-| [`btb_multigenre.csv`](https://github.com/FeliksMakarios/batak-toba-korpus/blob/main/data/btb_multigenre.csv) | Korpus multi-genre versi 2, 104 dokumen | Tersedia |
-| [`btb_parallel_sentence.csv`](https://github.com/FeliksMakarios/batak-toba-korpus/blob/main/data/btb_parallel_sentence.csv) | Korpus paralel tingkat kalimat, 1.542 pasangan | Tersedia |
-| [`iaa/`](https://github.com/FeliksMakarios/batak-toba-korpus/tree/main/data/iaa) | Laporan kesepakatan antaranotator, matriks konfusi, analisis sensitivitas, dan keputusan akhir 145 pasangan | Tersedia |
-| `btb_bible.csv` | Korpus paralel Alkitab, satu pasal per kitab | Belum tersedia. Sisi Indonesianya memakai Terjemahan Baru (1974) dari Lembaga Alkitab Indonesia, dan izin redistribusinya belum dipastikan. |
-
-## Skema data
-
-Berkas `btb_multigenre.csv` versi 2 memakai sembilan kolom: `doc_id`, `title`, `text_bt`, `text_id`, `genre`, `subgenre`, `source_link`, `notes`, dan `is_parallel`. Kolom `doc_id` berformat `mg_001` sampai `mg_104` dan dipakai juga pada korpus paralel. Berkas `btb_parallel_sentence.csv` memakai kolom tersendiri, antara lain `pair_id`, `doc_id`, `toba_final`, `indo_final`, `review_status`, `gold_decision`, dan `validasi_manusia`.
-
-Penjelasan setiap kolom tersedia pada [metadata/skema-kolom.md](https://github.com/FeliksMakarios/batak-toba-korpus/blob/main/metadata/skema-kolom.md) dan [data/README.md](https://github.com/FeliksMakarios/batak-toba-korpus/blob/main/data/README.md).
-
 ## Keterbatasan
 
 1. Domain keagamaan sangat dominan, sekitar 75% kata Batak Toba.
@@ -142,13 +94,27 @@ Penjelasan setiap kolom tersedia pada [metadata/skema-kolom.md](https://github.c
 4. Data lisan belum tersedia.
 5. Korpus belum memiliki anotasi linguistik. Anotasi Universal Dependencies sedang berjalan pada [tahap 2](../anotasi-ud/index.md).
 
-## Dokumentasi
+## Halaman lain
 
-1. [Laporan teknis](https://github.com/FeliksMakarios/batak-toba-korpus/blob/main/docs/laporan-teknis.md)
-2. [Metode pengumpulan dan kurasi data](https://github.com/FeliksMakarios/batak-toba-korpus/blob/main/docs/pengumpulan-data.md)
-3. [Pernyataan asal, lisensi, dan etika data](https://github.com/FeliksMakarios/batak-toba-korpus/blob/main/docs/pernyataan-data.md)
-4. [Diagram alur pengolahan korpus](https://github.com/FeliksMakarios/batak-toba-korpus/blob/main/docs/peta-alur-korpus.svg)
-5. [Notebook alur lengkap, termasuk kesepakatan antaranotator dan adjudikasi](https://github.com/FeliksMakarios/batak-toba-korpus/blob/main/notebooks/alur_lengkap_korpus_batak_toba.ipynb)
+<div class="grid cards" markdown>
+
+-   :material-swap-horizontal:{ .lg .middle } **Korpus paralel dan kesepakatan antaranotator**
+
+    ---
+
+    1.542 pasangan kalimat Batak Toba dan Indonesia, 182 di antaranya divalidasi manusia, beserta tafsir kappa 0,170.
+
+    [:octicons-arrow-right-24: Lihat korpus paralel](paralel.md)
+
+-   :material-download:{ .lg .middle } **Berkas data, skema, dan dokumentasi**
+
+    ---
+
+    Berkas CSV yang tersedia, kolom setiap berkas, dan tautan ke laporan teknis.
+
+    [:octicons-arrow-right-24: Lihat berkas](berkas.md)
+
+</div>
 
 ## Lisensi dan sitasi
 
