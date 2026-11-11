@@ -7,6 +7,8 @@ hide:
 
 <div class="nt-hero" markdown>
 
+<div class="nt-hero-text" markdown>
+
 <p class="nt-kicker">Five-year research programme · Universitas Pelita Harapan</p>
 
 <h1>Batak Toba NLP</h1>
@@ -15,6 +17,13 @@ hide:
 
 [Browse pilot sentences](anotasi-ud/kalimat-pilot.md){ .md-button .md-button--primary }
 [Read the annotation guideline](anotasi-ud/pedoman.md){ .md-button }
+
+</div>
+
+<figure class="nt-hero-art">
+  <div class="conllu-tree" data-src="contoh-pedoman.conllu" data-sentence="0"></div>
+  <figcaption><em lang="bbc">Mangallang dengke do si Polan.</em> ‘Si Polan is eating fish.’ The sentence-initial predicate is the root, example 1 of the annotation guideline.</figcaption>
+</figure>
 
 </div>
 

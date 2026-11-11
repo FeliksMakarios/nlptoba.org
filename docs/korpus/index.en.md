@@ -57,6 +57,17 @@ Counts depend on how punctuation is treated, so token counts are reported with t
 
 ## Genres
 
+<figure class="nt-chart">
+  <figcaption>Batak Toba words by genre <span>(97,952 words, hover or focus a bar for details)</span></figcaption>
+  <ol class="nt-bars">
+    <li tabindex="0" aria-label="Religious: 73,816 words, 75.4%"><span class="nt-bar-name">Religious</span><span class="nt-bar-track" aria-hidden="true"><span class="nt-bar-fill" style="--w: 100.0%"></span></span><span class="nt-bar-val" aria-hidden="true">75.4%</span><span class="nt-bar-tip" aria-hidden="true">73,816 words · prayers, HKBP agenda, and Bible</span></li>
+    <li tabindex="0" aria-label="Contemporary Media: 15,208 words, 15.5%"><span class="nt-bar-name">Contemporary Media</span><span class="nt-bar-track" aria-hidden="true"><span class="nt-bar-fill" style="--w: 20.6%"></span></span><span class="nt-bar-val" aria-hidden="true">15.5%</span><span class="nt-bar-tip" aria-hidden="true">15,208 words · 23 documents</span></li>
+    <li tabindex="0" aria-label="Educational: 6,035 words, 6.2%"><span class="nt-bar-name">Educational</span><span class="nt-bar-track" aria-hidden="true"><span class="nt-bar-fill" style="--w: 8.2%"></span></span><span class="nt-bar-val" aria-hidden="true">6.2%</span><span class="nt-bar-tip" aria-hidden="true">6,035 words · 17 documents</span></li>
+    <li tabindex="0" aria-label="Historical/Traditional: 1,796 words, 1.8%"><span class="nt-bar-name">Historical/Traditional</span><span class="nt-bar-track" aria-hidden="true"><span class="nt-bar-fill" style="--w: 2.4%"></span></span><span class="nt-bar-val" aria-hidden="true">1.8%</span><span class="nt-bar-tip" aria-hidden="true">1,796 words · 2 documents</span></li>
+    <li tabindex="0" aria-label="Literary: 1,097 words, 1.1%"><span class="nt-bar-name">Literary</span><span class="nt-bar-track" aria-hidden="true"><span class="nt-bar-fill" style="--w: 1.5%"></span></span><span class="nt-bar-val" aria-hidden="true">1.1%</span><span class="nt-bar-tip" aria-hidden="true">1,097 words · 53 documents</span></li>
+  </ol>
+</figure>
+
 | Genre | Sub-genre | Documents | Batak Toba words |
 |---|---|---:|---:|
 | Historical/Traditional | Folktales | 2 | 1,796 |
