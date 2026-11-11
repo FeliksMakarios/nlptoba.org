@@ -57,6 +57,17 @@ Hasil hitungan bergantung pada perlakuan terhadap tanda baca. Karena itu jumlah 
 
 ## Genre
 
+<figure class="nt-chart">
+  <figcaption>Kata Batak Toba per genre <span>(97.952 kata, arahkan kursor atau fokus ke batang untuk rincian)</span></figcaption>
+  <ol class="nt-bars">
+    <li tabindex="0" aria-label="Religious: 73.816 kata, 75,4%"><span class="nt-bar-name">Religious</span><span class="nt-bar-track" aria-hidden="true"><span class="nt-bar-fill" style="--w: 100.0%"></span></span><span class="nt-bar-val" aria-hidden="true">75,4%</span><span class="nt-bar-tip" aria-hidden="true">73.816 kata · doa, Agenda HKBP, dan Alkitab</span></li>
+    <li tabindex="0" aria-label="Contemporary Media: 15.208 kata, 15,5%"><span class="nt-bar-name">Contemporary Media</span><span class="nt-bar-track" aria-hidden="true"><span class="nt-bar-fill" style="--w: 20.6%"></span></span><span class="nt-bar-val" aria-hidden="true">15,5%</span><span class="nt-bar-tip" aria-hidden="true">15.208 kata · 23 dokumen</span></li>
+    <li tabindex="0" aria-label="Educational: 6.035 kata, 6,2%"><span class="nt-bar-name">Educational</span><span class="nt-bar-track" aria-hidden="true"><span class="nt-bar-fill" style="--w: 8.2%"></span></span><span class="nt-bar-val" aria-hidden="true">6,2%</span><span class="nt-bar-tip" aria-hidden="true">6.035 kata · 17 dokumen</span></li>
+    <li tabindex="0" aria-label="Historical/Traditional: 1.796 kata, 1,8%"><span class="nt-bar-name">Historical/Traditional</span><span class="nt-bar-track" aria-hidden="true"><span class="nt-bar-fill" style="--w: 2.4%"></span></span><span class="nt-bar-val" aria-hidden="true">1,8%</span><span class="nt-bar-tip" aria-hidden="true">1.796 kata · 2 dokumen</span></li>
+    <li tabindex="0" aria-label="Literary: 1.097 kata, 1,1%"><span class="nt-bar-name">Literary</span><span class="nt-bar-track" aria-hidden="true"><span class="nt-bar-fill" style="--w: 1.5%"></span></span><span class="nt-bar-val" aria-hidden="true">1,1%</span><span class="nt-bar-tip" aria-hidden="true">1.097 kata · 53 dokumen</span></li>
+  </ol>
+</figure>
+
 | Genre | Sub-genre | Dokumen | Kata Batak Toba |
 |---|---|---:|---:|
 | Historical/Traditional | Folktales (cerita rakyat) | 2 | 1.796 |

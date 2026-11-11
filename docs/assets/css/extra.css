@@ -27,6 +27,8 @@
   --nt-run: #9a2c23;
   --nt-muted: #5e5753;
   --nt-plan-bg: color-mix(in srgb, var(--nt-y5) 28%, var(--md-default-bg-color));
+  --nt-note: #5b5250;
+  --nt-bar: #8c2b25;
 }
 
 [data-md-color-scheme="slate"] {
@@ -44,6 +46,19 @@
   --nt-run: #e8958a;
   --nt-muted: #bdb4b0;
   --nt-plan-bg: var(--nt-border);
+  --nt-note: #b9b0ac;
+  --nt-bar: #e8958a;
+}
+
+/* Judul halaman lebih tegas: tebal dan bertinta penuh, bukan tipis abu-abu */
+.md-typeset h1 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--md-default-fg-color);
+}
+.md-typeset h2 {
+  font-weight: 400;
+  color: var(--md-default-fg-color);
 }
 
 /* Tautan di dalam teks diberi garis bawah agar tidak hanya dibedakan oleh warna */
@@ -74,30 +89,20 @@
   border-color: currentColor;
 }
 
-/* Kotak info dan lipatan (details) memakai warna aksen, bukan biru bawaan tema */
-.md-typeset .admonition,
-.md-typeset details,
-.md-typeset .admonition.note,
-.md-typeset details.note,
-.md-typeset .admonition.info,
-.md-typeset details.info {
-  border-color: var(--md-accent-fg-color);
+/* Kotak catatan dan lipatan (details) berwarna arang netral. Merah hanya untuk
+   peringatan, agar catatan biasa tidak terbaca seperti peringatan. */
+.md-typeset :is(.admonition, details) {
+  --nt-adm: var(--nt-note);
+  border-color: var(--nt-adm);
 }
-.md-typeset .admonition-title,
-.md-typeset summary,
-.md-typeset .note > .admonition-title,
-.md-typeset .note > summary,
-.md-typeset .info > .admonition-title,
-.md-typeset .info > summary {
-  background-color: color-mix(in srgb, var(--md-accent-fg-color) 9%, transparent);
+.md-typeset :is(.admonition, details):is(.warning, .caution, .attention, .danger, .error, .failure, .bug) {
+  --nt-adm: var(--md-accent-fg-color);
 }
-.md-typeset .admonition-title::before,
-.md-typeset summary::before,
-.md-typeset .note > .admonition-title::before,
-.md-typeset .note > summary::before,
-.md-typeset .info > .admonition-title::before,
-.md-typeset .info > summary::before {
-  background-color: var(--md-accent-fg-color);
+.md-typeset :is(.admonition, details) > :is(.admonition-title, summary) {
+  background-color: color-mix(in srgb, var(--nt-adm) 10%, transparent);
+}
+.md-typeset :is(.admonition, details) > :is(.admonition-title, summary)::before {
+  background-color: var(--nt-adm);
 }
 
 /* Penanda status */
@@ -144,8 +149,29 @@
 
 /* Beranda */
 .md-typeset .nt-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 1.6rem;
+  align-items: center;
   padding: 1.6rem 0 0.6rem;
 }
+.md-typeset .nt-hero-art {
+  display: block;
+  width: auto;
+  margin: 0;
+  padding: 0.8rem 0.8rem 0.6rem;
+  background: var(--nt-card-bg);
+  border: 1px solid var(--nt-border);
+  border-radius: 0.3rem;
+}
+.md-typeset .nt-hero-art figcaption {
+  margin: 0.4rem 0 0;
+  max-width: none;
+  font-size: 0.68rem;
+  color: var(--nt-muted);
+  text-align: left;
+}
+.md-typeset .nt-hero-art figcaption em { color: var(--md-default-fg-color); }
 .md-typeset .nt-hero h1 {
   margin: 0 0 0.6rem;
   font-size: 2.4rem;
@@ -373,6 +399,91 @@
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
   .md-typeset .nt-hero h1 { font-size: 1.9rem; }
+  .md-typeset .nt-hero { grid-template-columns: 1fr; gap: 0.6rem; }
+}
+
+/* Tabel di layar sempit dibuat lebih rapat agar kolom angka tidak tersembunyi */
+@media screen and (max-width: 44.984375em) {
+  .md-typeset table:not([class]) { font-size: 0.62rem; }
+  .md-typeset table:not([class]) :is(th, td) { padding: 0.55em 0.6em; }
+  /* Tema memberi setiap kolom lebar minimal 5rem, terlalu lebar untuk empat kolom di ponsel */
+  .md-typeset table:not([class]) th { min-width: 0; }
+}
+
+/* Grafik batang horizontal sederhana (halaman korpus) */
+.md-typeset .nt-chart {
+  display: block;
+  width: auto;
+  max-width: 40rem;
+  margin: 1rem 0 1.2rem;
+}
+.md-typeset .nt-chart figcaption {
+  max-width: none;
+  margin: 0 0 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: left;
+}
+.md-typeset .nt-chart figcaption span {
+  font-weight: 400;
+  color: var(--nt-muted);
+}
+.md-typeset .nt-bars {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/* Mengalahkan indentasi daftar bawaan tema ([dir=ltr] .md-typeset ol li) */
+[dir] .md-typeset ol.nt-bars,
+[dir] .md-typeset ol.nt-bars > li { margin-left: 0; margin-right: 0; }
+.md-typeset .nt-bars li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 9.5rem minmax(0, 1fr) 3rem;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0.2rem 0.3rem;
+  font-size: 0.72rem;
+  text-align: left;
+  border-radius: 0.2rem;
+}
+.md-typeset .nt-bars li:hover,
+.md-typeset .nt-bars li:focus-visible {
+  background: var(--nt-card-bg);
+  outline: none;
+}
+.md-typeset .nt-bars li:focus-visible { box-shadow: 0 0 0 2px var(--md-accent-fg-color); }
+.md-typeset .nt-bar-track { display: block; height: 0.9rem; }
+.md-typeset .nt-bar-fill {
+  display: block;
+  width: var(--w);
+  min-width: 2px;
+  height: 100%;
+  background: var(--nt-bar);
+  border-radius: 0 4px 4px 0;
+}
+.md-typeset .nt-bar-val { text-align: right; font-variant-numeric: tabular-nums; }
+.md-typeset .nt-bar-tip {
+  position: absolute;
+  z-index: 2;
+  left: 9.5rem;
+  bottom: calc(100% + 2px);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.68rem;
+  white-space: nowrap;
+  color: var(--md-default-bg-color);
+  background: var(--md-default-fg-color);
+  border-radius: 0.2rem;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 120ms;
+}
+.md-typeset .nt-bars li:hover .nt-bar-tip,
+.md-typeset .nt-bars li:focus-visible .nt-bar-tip { opacity: 1; }
+@media screen and (max-width: 44.984375em) {
+  .md-typeset .nt-bars li { grid-template-columns: 6.5rem minmax(0, 1fr) 2.6rem; gap: 0.4rem; font-size: 0.66rem; }
+  .md-typeset .nt-bar-tip { left: 0; }
 }
 
 /* Penjelajah kalimat pilot */
@@ -404,9 +515,49 @@
   border-radius: 0.2rem;
   max-width: 100%;
 }
-.pilot-count {
+.pilot-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem 1rem;
+}
+.md-typeset .pilot-count {
+  margin: 0.6rem 0;
   font-size: 0.75rem;
-  color: var(--md-default-fg-color--light);
+  color: var(--nt-muted);
+  scroll-margin-top: 4.5rem;
+}
+.md-typeset .pilot-bar .md-button,
+.md-typeset .pilot-pager .md-button,
+.md-typeset .dep-nav .md-button,
+.md-typeset .dep-actions .md-button {
+  margin: 0;
+  padding: 0.35em 1em;
+  font-size: 0.7rem;
+}
+.md-typeset .md-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.pilot-pager {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem 1rem;
+  margin: 1rem 0;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--nt-border);
+  font-size: 0.75rem;
+}
+.md-typeset .pilot-none { color: var(--nt-muted); }
+.md-typeset .pilot-list mark {
+  padding: 0 0.1em;
+  color: inherit;
+  background: color-mix(in srgb, var(--nt-bar) 24%, transparent);
+  border-radius: 0.15em;
 }
 .pilot-item {
   border-top: 1px solid var(--nt-border);
@@ -445,7 +596,58 @@
 .md-typeset .pilot-dist table tr.total td { font-weight: 700; }
 
 /* Penampil pohon dependensi */
+.dep-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.6rem 1rem;
+}
 .dep-pick { max-width: 32rem; }
+.dep-nav { display: flex; gap: 0.4rem; }
+.md-typeset .dep-tip,
+.md-typeset .dep-hint {
+  margin: 0.2rem 0 0.4rem;
+  font-size: 0.7rem;
+  color: var(--nt-muted);
+}
+.md-typeset .dep-hint { margin: 0.35rem 0 0; }
+.md-typeset .dep-hint::before { content: "↔ "; }
+.dep-scroll--plain {
+  padding: 0;
+  border: 0;
+  background: none;
+}
+.md-typeset .dep-scroll--plain .dep-svg {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+.dep-tok { cursor: pointer; }
+.dep-tok:focus { outline: none; }
+.dep-hit { fill: transparent; }
+.dep-tok:hover .dep-hit { fill: color-mix(in srgb, var(--md-default-fg-color) 6%, transparent); }
+.dep-tok:focus-visible .dep-hit { stroke: var(--md-accent-fg-color); stroke-width: 1.5; }
+.dep-tok[aria-pressed="true"] .dep-form { font-weight: 700; }
+.dep-svg :is(.dep-arc, .dep-label, .dep-tok) { transition: opacity 120ms; }
+.dep-svg.is-focus :is(.dep-arc, .dep-label):not(.is-on) { opacity: 0.15; }
+.dep-svg.is-focus .dep-tok:not(.is-on) { opacity: 0.35; }
+.dep-svg .dep-arc.is-on { stroke: var(--md-accent-fg-color); stroke-width: 2; }
+.dep-legend {
+  margin: 0.8rem 0 0;
+  font-size: 0.72rem;
+}
+.md-typeset .dep-legend-title {
+  margin: 0 0 0.3rem;
+  font-weight: 700;
+}
+.md-typeset .dep-legend dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.2rem 0.8rem;
+  margin: 0;
+}
+.md-typeset .dep-legend dd { margin: 0; color: var(--nt-muted); }
+.dep-actions { margin: 0.8rem 0 0.2rem; }
 .md-typeset .dep-text {
   font-size: 0.95rem;
   font-weight: 600;

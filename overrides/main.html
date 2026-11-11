@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 
+{% block extrahead %}
+  {{ super() }}
+  <link rel="icon" type="image/png" sizes="48x48" href="{{ 'assets/images/favicon-48.png' | url }}">
+  <link rel="apple-touch-icon" href="{{ 'assets/images/apple-touch-icon.png' | url }}">
+{% endblock %}
+
 {% block libs %}
   {{ super() }}
   <script>

@@ -3,20 +3,27 @@
   var box = document.getElementById("pilot-explorer");
   if (!box) return;
   var T = window.NlpToba;
+  var PER_PAGE = 25;
   var L = {
     id: {
       genre: "Genre", batch: "Batch", cons: "Konstruksi", search: "Cari kata",
-      all: "Semua", shown: "kalimat ditampilkan dari", toba: "Batak Toba",
+      all: "Semua", shown: "kalimat cocok dari", sentencesLow: "kalimat", toba: "Batak Toba",
       trans: "Terjemahan Indonesia", words: "Kata", loading: "Memuat data...",
       fail: "Data gagal dimuat.", sentences: "Kalimat", docs: "Dokumen",
-      total: "Total", dist: "Sebaran per genre"
+      total: "Total", dist: "Sebaran per genre", reset: "Atur ulang",
+      prev: "Sebelumnya", next: "Berikutnya", page: "Halaman", of: "dari",
+      none: "Tidak ada kalimat yang cocok. Coba kurangi filter.",
+      pager: "Navigasi halaman kalimat"
     },
     en: {
       genre: "Genre", batch: "Batch", cons: "Construction", search: "Search",
-      all: "All", shown: "sentences shown out of", toba: "Batak Toba",
+      all: "All", shown: "matching sentences out of", sentencesLow: "sentences", toba: "Batak Toba",
       trans: "Indonesian translation", words: "Words", loading: "Loading data...",
       fail: "Failed to load data.", sentences: "Sentences", docs: "Documents",
-      total: "Total", dist: "Distribution by genre"
+      total: "Total", dist: "Distribution by genre", reset: "Reset",
+      prev: "Previous", next: "Next", page: "Page", of: "of",
+      none: "No sentences match. Try removing a filter.",
+      pager: "Sentence pages"
     }
   }[T.lang()];
 
@@ -36,6 +43,20 @@
     s.appendChild(T.el("option", { value: "", text: L.all }));
     values.forEach(function (v) { s.appendChild(T.el("option", { value: v, text: v })); });
     return T.el("label", {}, [T.el("span", { text: label }), s]);
+  }
+
+  // Teks dengan kata yang dicari ditandai <mark>, tanpa innerHTML.
+  function highlighted(tag, attrs, text, q) {
+    var e = T.el(tag, attrs);
+    if (!q) { e.textContent = text; return e; }
+    var low = text.toLowerCase(), i = 0, j;
+    while ((j = low.indexOf(q, i)) >= 0) {
+      if (j > i) e.appendChild(document.createTextNode(text.slice(i, j)));
+      e.appendChild(T.el("mark", { text: text.slice(j, j + q.length) }));
+      i = j + q.length;
+    }
+    if (i < text.length) e.appendChild(document.createTextNode(text.slice(i)));
+    return e;
   }
 
   function distribution(rows) {
@@ -85,46 +106,99 @@
       T.el("span", { text: L.search }),
       T.el("input", { type: "search", "aria-label": L.search })
     ]);
+    var sg = fGenre.querySelector("select"), sb = fBatch.querySelector("select");
+    var sc = fCons.querySelector("select"), qi = fText.querySelector("input");
+    var reset = T.el("button", { type: "button", class: "md-button pilot-reset", text: L.reset });
     var count = T.el("p", { class: "pilot-count", "aria-live": "polite" });
     var list = T.el("div", { class: "pilot-list" });
+    var pager = T.el("nav", { class: "pilot-pager", "aria-label": L.pager });
+    var page = 1;
 
     box.appendChild(distribution(rows));
     box.appendChild(T.el("div", { class: "pilot-filters" }, [fGenre, fBatch, fCons, fText]));
-    box.appendChild(count);
+    box.appendChild(T.el("div", { class: "pilot-bar" }, [count, reset]));
     box.appendChild(list);
+    box.appendChild(pager);
 
-    function update() {
-      var g = fGenre.querySelector("select").value;
-      var b = fBatch.querySelector("select").value;
-      var c = fCons.querySelector("select").value;
-      var q = fText.querySelector("input").value.trim().toLowerCase();
+    // Filter dan halaman disimpan di alamat, sehingga hasilnya bisa dibagikan.
+    var params = new URLSearchParams(location.search);
+    function setIf(sel, v) {
+      if (v && [].some.call(sel.options, function (o) { return o.value === v; })) sel.value = v;
+    }
+    setIf(sg, params.get("genre"));
+    setIf(sb, params.get("batch"));
+    setIf(sc, params.get("konstruksi"));
+    qi.value = params.get("q") || "";
+    page = Math.max(1, parseInt(params.get("hal"), 10) || 1);
+
+    function saveUrl() {
+      var p = new URLSearchParams();
+      if (sg.value) p.set("genre", sg.value);
+      if (sb.value) p.set("batch", sb.value);
+      if (sc.value) p.set("konstruksi", sc.value);
+      if (qi.value.trim()) p.set("q", qi.value.trim());
+      if (page > 1) p.set("hal", String(page));
+      var s = p.toString();
+      history.replaceState(null, "", location.pathname + (s ? "?" + s : "") + location.hash);
+    }
+
+    function pagerButton(text, target, disabled) {
+      var b = T.el("button", { type: "button", class: "md-button", text: text });
+      if (disabled) b.disabled = true;
+      b.addEventListener("click", function () {
+        page = target;
+        update(true);
+      });
+      return b;
+    }
+
+    function update(scroll) {
+      var g = sg.value, b = sb.value, c = sc.value;
+      var q = qi.value.trim().toLowerCase();
       var hit = rows.filter(function (r) {
         return (!g || r.genre === g) && (!b || r.batch === b) &&
           (!c || r.indikasi_konstruksi.split(", ").indexOf(c) >= 0) &&
           (!q || (r.kalimat_toba + " " + r.terjemahan_indonesia).toLowerCase().indexOf(q) >= 0);
       });
-      count.textContent = hit.length + " " + L.shown + " " + rows.length;
+      var pages = Math.max(1, Math.ceil(hit.length / PER_PAGE));
+      page = Math.min(page, pages);
+      reset.hidden = !(g || b || c || q);
+      count.textContent = (g || b || c || q)
+        ? hit.length + " " + L.shown + " " + rows.length
+        : rows.length + " " + L.sentencesLow;
       list.textContent = "";
-      hit.forEach(function (r) {
+      if (!hit.length) list.appendChild(T.el("p", { class: "pilot-none", text: L.none }));
+      hit.slice((page - 1) * PER_PAGE, page * PER_PAGE).forEach(function (r) {
         list.appendChild(T.el("article", { class: "pilot-item" }, [
           T.el("div", { class: "pilot-meta" }, [
             T.el("code", { text: r.pilot_id }),
             T.el("span", { text: r.genre + " / " + r.sub_genre }),
             T.el("span", { text: L.batch + " " + r.batch + " · " + r.jumlah_kata + " " + L.words.toLowerCase() })
           ]),
-          T.el("p", { class: "pilot-toba", lang: "bbc", text: r.kalimat_toba }),
-          T.el("p", { class: "pilot-trans", lang: "id", text: r.terjemahan_indonesia }),
+          highlighted("p", { class: "pilot-toba", lang: "bbc" }, r.kalimat_toba, q),
+          highlighted("p", { class: "pilot-trans", lang: "id" }, r.terjemahan_indonesia, q),
           T.el("div", { class: "pilot-tags" }, r.indikasi_konstruksi.split(", ").map(function (t) {
             return T.el("span", { text: t });
           }))
         ]));
       });
+      pager.textContent = "";
+      if (pages > 1) {
+        pager.appendChild(pagerButton(L.prev, page - 1, page === 1));
+        pager.appendChild(T.el("span", { text: L.page + " " + page + " " + L.of + " " + pages }));
+        pager.appendChild(pagerButton(L.next, page + 1, page === pages));
+      }
+      saveUrl();
+      if (scroll) count.scrollIntoView({ block: "start", behavior: "smooth" });
     }
 
-    [fGenre, fBatch, fCons].forEach(function (f) {
-      f.querySelector("select").addEventListener("change", update);
+    function refilter() { page = 1; update(false); }
+    [sg, sb, sc].forEach(function (s) { s.addEventListener("change", refilter); });
+    qi.addEventListener("input", refilter);
+    reset.addEventListener("click", function () {
+      sg.value = sb.value = sc.value = qi.value = "";
+      refilter();
     });
-    fText.querySelector("input").addEventListener("input", update);
-    update();
+    update(false);
   }
 })();
