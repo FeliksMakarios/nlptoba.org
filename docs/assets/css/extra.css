@@ -156,6 +156,8 @@
   padding: 1.6rem 0 0.6rem;
 }
 .md-typeset .nt-hero-art {
+  display: block;
+  width: auto;
   margin: 0;
   padding: 0.8rem 0.8rem 0.6rem;
   background: var(--nt-card-bg);
@@ -404,10 +406,15 @@
 @media screen and (max-width: 44.984375em) {
   .md-typeset table:not([class]) { font-size: 0.62rem; }
   .md-typeset table:not([class]) :is(th, td) { padding: 0.55em 0.6em; }
+  /* Tema memberi setiap kolom lebar minimal 5rem, terlalu lebar untuk empat kolom di ponsel */
+  .md-typeset table:not([class]) th { min-width: 0; }
 }
 
 /* Grafik batang horizontal sederhana (halaman korpus) */
 .md-typeset .nt-chart {
+  display: block;
+  width: auto;
+  max-width: 40rem;
   margin: 1rem 0 1.2rem;
 }
 .md-typeset .nt-chart figcaption {
@@ -426,6 +433,9 @@
   padding: 0;
   list-style: none;
 }
+/* Mengalahkan indentasi daftar bawaan tema ([dir=ltr] .md-typeset ol li) */
+[dir] .md-typeset ol.nt-bars,
+[dir] .md-typeset ol.nt-bars > li { margin-left: 0; margin-right: 0; }
 .md-typeset .nt-bars li {
   position: relative;
   display: grid;
@@ -433,8 +443,9 @@
   align-items: center;
   gap: 0.6rem;
   margin: 0;
-  padding: 0.2rem 0;
+  padding: 0.2rem 0.3rem;
   font-size: 0.72rem;
+  text-align: left;
   border-radius: 0.2rem;
 }
 .md-typeset .nt-bars li:hover,

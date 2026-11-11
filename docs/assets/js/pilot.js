@@ -7,7 +7,7 @@
   var L = {
     id: {
       genre: "Genre", batch: "Batch", cons: "Konstruksi", search: "Cari kata",
-      all: "Semua", shown: "kalimat cocok dari", toba: "Batak Toba",
+      all: "Semua", shown: "kalimat cocok dari", sentencesLow: "kalimat", toba: "Batak Toba",
       trans: "Terjemahan Indonesia", words: "Kata", loading: "Memuat data...",
       fail: "Data gagal dimuat.", sentences: "Kalimat", docs: "Dokumen",
       total: "Total", dist: "Sebaran per genre", reset: "Atur ulang",
@@ -17,7 +17,7 @@
     },
     en: {
       genre: "Genre", batch: "Batch", cons: "Construction", search: "Search",
-      all: "All", shown: "matching sentences out of", toba: "Batak Toba",
+      all: "All", shown: "matching sentences out of", sentencesLow: "sentences", toba: "Batak Toba",
       trans: "Indonesian translation", words: "Words", loading: "Loading data...",
       fail: "Failed to load data.", sentences: "Sentences", docs: "Documents",
       total: "Total", dist: "Distribution by genre", reset: "Reset",
@@ -163,7 +163,9 @@
       var pages = Math.max(1, Math.ceil(hit.length / PER_PAGE));
       page = Math.min(page, pages);
       reset.hidden = !(g || b || c || q);
-      count.textContent = hit.length + " " + L.shown + " " + rows.length;
+      count.textContent = (g || b || c || q)
+        ? hit.length + " " + L.shown + " " + rows.length
+        : rows.length + " " + L.sentencesLow;
       list.textContent = "";
       if (!hit.length) list.appendChild(T.el("p", { class: "pilot-none", text: L.none }));
       hit.slice((page - 1) * PER_PAGE, page * PER_PAGE).forEach(function (r) {
