@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block libs %}
+  {{ super() }}
+  <script>
+    // Arahkan tema ke indeks pencarian sesuai bahasa halaman (lihat hooks/indeks_pencarian.py).
+    (function () {
+      var lang = (document.documentElement.lang || "id").indexOf("en") === 0 ? "en" : "id";
+      var open = XMLHttpRequest.prototype.open;
+      XMLHttpRequest.prototype.open = function (method, url) {
+        var args = Array.prototype.slice.call(arguments);
+        if (typeof url === "string" && /\/search\/search_index\.json$/.test(url)) {
+          args[1] = url.replace(/search_index\.json$/, "search_index." + lang + ".json");
+        }
+        return open.apply(this, args);
+      };
+    })();
+  </script>
+{% endblock %}

@@ -1,0 +1,19 @@
+{#-
+  Halaman 404 dwibahasa. Plugin i18n hanya menulis satu berkas 404.html untuk
+  seluruh situs, jadi isinya memuat kedua bahasa dan tidak memakai menu tab.
+-#}
+{% extends "main.html" %}
+{% block tabs %}{% endblock %}
+{% block content %}
+  <div lang="id">
+    <h1>Halaman tidak ditemukan</h1>
+    <p>Alamat yang Anda buka tidak ada atau sudah dipindahkan.</p>
+    <p><a class="md-button md-button--primary" href="/">Ke beranda</a></p>
+  </div>
+  <hr>
+  <div lang="en">
+    <h2>Page not found</h2>
+    <p>The page you requested does not exist or has moved.</p>
+    <p><a class="md-button" href="/en/">Go to the English home page</a></p>
+  </div>
+{% endblock %}

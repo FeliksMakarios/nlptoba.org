@@ -13,6 +13,7 @@ copyright: >-
 
 theme:
   name: material
+  custom_dir: overrides
   language: id
   palette:
     - media: "(prefers-color-scheme: light)"
@@ -58,6 +59,25 @@ plugins:
           site_description: >-
             Natural language processing for Batak Toba: corpus, Universal
             Dependencies annotation guideline, and follow-up research outputs.
+          copyright: >-
+            Informatics Study Program, Universitas Pelita Harapan. Data follow
+            the license of each source repository.
+          theme:
+            palette:
+              - media: "(prefers-color-scheme: light)"
+                scheme: default
+                primary: custom
+                accent: custom
+                toggle:
+                  icon: material/weather-night
+                  name: Dark mode
+              - media: "(prefers-color-scheme: dark)"
+                scheme: slate
+                primary: custom
+                accent: custom
+                toggle:
+                  icon: material/weather-sunny
+                  name: Light mode
           nav_translations:
             Beranda: Home
             Korpus (Tahap 1): Corpus (Stage 1)
@@ -77,6 +97,9 @@ nav:
       - Kalimat pilot: anotasi-ud/kalimat-pilot.md
       - Pohon dependensi: anotasi-ud/pohon.md
   - Tentang: tentang.md
+
+hooks:
+  - hooks/indeks_pencarian.py
 
 extra_css:
   - assets/css/extra.css

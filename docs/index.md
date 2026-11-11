@@ -29,7 +29,7 @@ hide:
 
 <div class="nt-roadmap">
   <section class="nt-year nt-y1 is-current">
-    <div class="nt-year-tab">Tahun I</div>
+    <h3 class="nt-year-tab">Tahun I</h3>
     <div class="nt-year-body">
       <h4>Pengumpulan dan Praproses Data</h4>
       <p>Mengumpulkan teks Batak Toba dari berbagai sumber.</p>
@@ -39,7 +39,7 @@ hide:
     <div class="nt-year-foot"><span class="nt-status nt-status--run">BERJALAN</span></div>
   </section>
   <section class="nt-year nt-y2">
-    <div class="nt-year-tab">Tahun II</div>
+    <h3 class="nt-year-tab">Tahun II</h3>
     <div class="nt-year-body">
       <h4>Anotasi Kolaboratif Tahap 1</h4>
       <p>Memperluas anotasi untuk tugas NLP lanjutan, misalnya korpus paralel Batak Toba dan Indonesia untuk penerjemahan mesin.</p>
@@ -49,7 +49,7 @@ hide:
     <div class="nt-year-foot"><span class="nt-status nt-status--plan">RENCANA</span></div>
   </section>
   <section class="nt-year nt-y3">
-    <div class="nt-year-tab">Tahun III</div>
+    <h3 class="nt-year-tab">Tahun III</h3>
     <div class="nt-year-body">
       <h4>Pra-pelatihan Model Monolingual</h4>
       <p>Membangun model Transformer monolingual khusus Batak Toba.</p>
@@ -59,7 +59,7 @@ hide:
     <div class="nt-year-foot"><span class="nt-status nt-status--plan">RENCANA</span></div>
   </section>
   <section class="nt-year nt-y4">
-    <div class="nt-year-tab">Tahun IV</div>
+    <h3 class="nt-year-tab">Tahun IV</h3>
     <div class="nt-year-body">
       <h4>Augmentasi dan Optimasi Data</h4>
       <p>Penerjemahan balik, data sintetis, dan pembelajaran aktif.</p>
@@ -69,7 +69,7 @@ hide:
     <div class="nt-year-foot"><span class="nt-status nt-status--plan">RENCANA</span></div>
   </section>
   <section class="nt-year nt-y5">
-    <div class="nt-year-tab">Tahun V</div>
+    <h3 class="nt-year-tab">Tahun V</h3>
     <div class="nt-year-body">
       <h4>Validasi Komunitas</h4>
       <p>Validasi model oleh komunitas Batak Toba dan sesi umpan balik.</p>
@@ -80,7 +80,7 @@ hide:
   </section>
 </div>
 
-## Luaran yang sudah terbit
+## Tahap penelitian
 
 <div class="nt-stages">
   <a class="nt-stage nt-y1" href="korpus/">
@@ -108,4 +108,4 @@ Bahasa Batak Toba dahulu ditulis dengan aksara Batak dan kini lebih banyak memak
   <dt>Ciri tipologis</dt><dd>Predikat di awal kalimat dan sistem diatesis Austronesia</dd>
 </dl>
 
-Situs ini adalah langkah awal menuju platform terbuka untuk komunitas yang direncanakan pada Tahun V. Seluruh isinya dibangun ulang otomatis dari repositori [batak-toba-korpus](https://github.com/FeliksMakarios/batak-toba-korpus) dan [batak-toba-corpus-v2](https://github.com/FeliksMakarios/batak-toba-corpus-v2).
+Situs ini adalah langkah awal menuju platform terbuka untuk komunitas yang direncanakan pada Tahun V. Pedoman anotasi, kalimat pilot, dan contoh pohon dependensi diambil otomatis setiap hari dari repositori [batak-toba-corpus-v2](https://github.com/FeliksMakarios/batak-toba-corpus-v2). Halaman korpus merangkum repositori [batak-toba-korpus](https://github.com/FeliksMakarios/batak-toba-korpus) dan diperbarui setiap kali korpus dirilis ulang.

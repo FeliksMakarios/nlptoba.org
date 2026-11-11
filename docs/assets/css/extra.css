@@ -25,6 +25,8 @@
   --nt-band-ink: #1e1a19;
   --nt-done: #2f6b45;
   --nt-run: #9a2c23;
+  --nt-muted: #5e5753;
+  --nt-plan-bg: color-mix(in srgb, var(--nt-y5) 28%, var(--md-default-bg-color));
 }
 
 [data-md-color-scheme="slate"] {
@@ -40,6 +42,15 @@
   --nt-band-ink: #000000;
   --nt-done: #8fcfa4;
   --nt-run: #e8958a;
+  --nt-muted: #bdb4b0;
+  --nt-plan-bg: var(--nt-border);
+}
+
+/* Tautan di dalam teks diberi garis bawah agar tidak hanya dibedakan oleh warna */
+.md-typeset :is(p, li, td, dd, blockquote) a:not(.md-button):not(.headerlink) {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
 }
 
 /* Pita ornamen geometris di bawah header, terinspirasi bingkai gorga.
@@ -94,7 +105,7 @@
   display: inline-block;
   padding: 0 0.5em;
   border-radius: 1rem;
-  font-size: 0.62rem;
+  font-size: 0.64rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   line-height: 1.6;
@@ -103,7 +114,7 @@
 }
 .md-typeset .nt-status--done { color: var(--nt-done); }
 .md-typeset .nt-status--run { color: var(--nt-run); }
-.md-typeset .nt-status--plan { color: var(--md-default-fg-color--light); }
+.md-typeset .nt-status--plan { color: var(--nt-muted); }
 
 /* Kartu luaran pada halaman tahap */
 .md-typeset .grid.cards > ul > li {
@@ -173,7 +184,7 @@
 }
 .md-typeset .nt-stat span {
   font-size: 0.7rem;
-  color: var(--md-default-fg-color--light);
+  color: var(--nt-muted);
 }
 /* Dua angka dalam satu kotak, misalnya kata dan token NLTK */
 .md-typeset .nt-stat--pair span {
@@ -202,11 +213,14 @@
   box-shadow: 0 0 0 2px var(--nt-year);
 }
 .md-typeset .nt-year-tab {
+  margin: 0;
   padding: 0.55rem 0.7rem;
   background: var(--nt-year);
   color: var(--nt-year-ink);
   font-weight: 700;
   font-size: 0.8rem;
+  line-height: 1.4;
+  letter-spacing: normal;
 }
 .md-typeset .nt-year-body {
   padding: 0.6rem 0.7rem 0.7rem;
@@ -221,7 +235,7 @@
 }
 .md-typeset .nt-year-body p {
   margin: 0 0 0.5rem;
-  color: var(--md-default-fg-color--light);
+  color: var(--nt-muted);
 }
 .md-typeset .nt-year-foot {
   padding: 0 0.7rem 0.7rem;
@@ -259,7 +273,7 @@
 .md-typeset .nt-stage p {
   margin: 0;
   font-size: 0.75rem;
-  color: var(--md-default-fg-color--light);
+  color: var(--nt-muted);
 }
 .md-typeset .nt-stage .nt-more {
   display: inline-block;
@@ -306,7 +320,11 @@
   clip-path: polygon(0 0, calc(100% - 0.9rem) 0, 100% 50%, calc(100% - 0.9rem) 100%, 0 100%);
 }
 .md-typeset .nt-step:last-child { margin-right: 0; }
-.md-typeset .nt-step.is-plan { opacity: 0.55; }
+/* Langkah rencana memakai latar redup, bukan opacity, agar teksnya tetap terbaca */
+.md-typeset .nt-step.is-plan {
+  background: var(--nt-plan-bg);
+  color: var(--md-default-fg-color);
+}
 .md-typeset .nt-step-title {
   display: block;
   font-size: 0.68rem;
@@ -321,14 +339,14 @@
 .md-typeset .nt-step-note {
   display: block;
   margin-top: 0.25rem;
-  font-size: 0.62rem;
+  font-size: 0.64rem;
   line-height: 1.35;
   opacity: 0.92;
 }
 .md-typeset .nt-step-state {
   display: inline-block;
   margin-top: 0.35rem;
-  font-size: 0.58rem;
+  font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -398,7 +416,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.2rem 0.8rem;
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   color: var(--md-default-fg-color--light);
 }
 .md-typeset .pilot-toba {
@@ -418,7 +436,7 @@
   margin-top: 0.35rem;
 }
 .pilot-tags span {
-  font-size: 0.62rem;
+  font-size: 0.66rem;
   padding: 0.05rem 0.4rem;
   border-radius: 1rem;
   background: var(--nt-card-bg);
@@ -457,7 +475,7 @@
   stroke-linejoin: round;
 }
 .dep-form { fill: var(--md-default-fg-color); font-size: 15px; }
-.dep-upos { fill: var(--md-default-fg-color--light); font-size: 11px; letter-spacing: 0.04em; }
+.dep-upos { fill: var(--md-default-fg-color--light); font-size: 12px; letter-spacing: 0.04em; }
 .dep-table-wrap { overflow-x: auto; }
 .md-typeset .dep-table table { font-size: 0.7rem; }
 

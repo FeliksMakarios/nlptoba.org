@@ -51,5 +51,37 @@
     return e;
   }
 
+  // Aksesibilitas: area yang dapat digulir ke samping harus bisa dijangkau papan ketik,
+  // dan kotak dialog pencarian milik tema perlu nama.
+  var A = {
+    id: { table: "Tabel {n}, dapat digulir ke samping", search: "Pencarian" },
+    en: { table: "Table {n}, scrollable horizontally", search: "Search" }
+  }[lang()];
+
+  function markScrollable() {
+    document.querySelectorAll(".md-typeset__scrollwrap").forEach(function (w, i) {
+      if (w.scrollWidth > w.clientWidth + 1) {
+        w.setAttribute("tabindex", "0");
+        w.setAttribute("role", "region");
+        // Nomor urut membuat setiap area bernama unik bagi pembaca layar.
+        w.setAttribute("aria-label", A.table.replace("{n}", i + 1));
+      } else {
+        w.removeAttribute("tabindex");
+        w.removeAttribute("role");
+        w.removeAttribute("aria-label");
+      }
+    });
+  }
+
+  function init() {
+    var search = document.querySelector(".md-search");
+    if (search && !search.getAttribute("aria-label")) search.setAttribute("aria-label", A.search);
+    markScrollable();
+    var t;
+    window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(markScrollable, 200); });
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+
   window.NlpToba = { dataUrl: dataUrl, lang: lang, parseCsv: parseCsv, el: el };
 })();
