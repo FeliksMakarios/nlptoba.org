@@ -4,6 +4,82 @@
   {{ super() }}
   <link rel="icon" type="image/png" sizes="48x48" href="{{ 'assets/images/favicon-48.png' | url }}">
   <link rel="apple-touch-icon" href="{{ 'assets/images/apple-touch-icon.png' | url }}">
+
+  {#- Pratinjau tautan untuk WhatsApp, LinkedIn, X, dan sejenisnya. -#}
+  {% set situs = config.extra.situs %}
+  {% set en = config.theme.language == "en" %}
+  {% if page and page.meta and page.meta.description %}
+    {% set deskripsi = page.meta.description %}
+  {% else %}
+    {% set deskripsi = config.site_description %}
+  {% endif %}
+  {% if page and (page.is_homepage or page.url == "en/") %}
+    {% set judul = config.site_name %}
+  {% elif page and page.meta and page.meta.title %}
+    {#- Judul dari front matter lebih lengkap daripada judul menu, misalnya "Ringkasan". -#}
+    {% set judul = page.meta.title ~ " - " ~ config.site_name %}
+  {% elif page and page.title %}
+    {% set judul = page.title ~ " - " ~ config.site_name %}
+  {% else %}
+    {% set judul = config.site_name %}
+  {% endif %}
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ config.site_name }}">
+  <meta property="og:title" content="{{ judul }}">
+  <meta property="og:description" content="{{ deskripsi }}">
+  {% if page and page.canonical_url %}<meta property="og:url" content="{{ page.canonical_url }}">{% endif %}
+  <meta property="og:locale" content="{{ 'en_US' if en else 'id_ID' }}">
+  <meta property="og:image" content="{{ situs }}assets/images/pratinjau.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{{ 'Batak Toba NLP: dependency tree of Mangallang dengke do si Polan' if en else 'NLP Batak Toba: pohon dependensi Mangallang dengke do si Polan' }}">
+  <meta name="twitter:card" content="summary_large_image">
+
+  {#- Data terstruktur schema.org/Dataset agar korpus dan pedoman dapat ditemukan
+      di Google Dataset Search. Dipasang lewat kunci "dataset" pada front matter. -#}
+  {% set pembuat = {"@type": "Person", "name": "Feliks Victor Parningotan Samosir",
+                    "affiliation": {"@type": "Organization", "name": "Universitas Pelita Harapan"}} %}
+  {% if page and page.meta and page.meta.dataset == "korpus" %}
+  <script type="application/ld+json">{{ {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Korpus Bahasa Batak Toba (Batak Toba Language Corpus)",
+    "description": "Batak Toba (bbc) and Indonesian (ind) text corpus: a manually curated multi-genre sub-corpus of 104 documents (97,952 Batak Toba words) and a sentence-level parallel corpus of 1,542 pairs, of which 182 are human-validated.",
+    "url": situs ~ "korpus/",
+    "sameAs": "https://github.com/FeliksMakarios/batak-toba-korpus",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "isAccessibleForFree": true,
+    "creator": pembuat,
+    "inLanguage": ["bbc", "id"],
+    "keywords": ["Batak Toba", "low-resource language", "parallel corpus", "text corpus", "Indonesian regional languages"],
+    "distribution": [
+      {"@type": "DataDownload", "encodingFormat": "text/csv", "name": "btb_multigenre.csv",
+       "contentUrl": "https://raw.githubusercontent.com/FeliksMakarios/batak-toba-korpus/main/data/btb_multigenre.csv"},
+      {"@type": "DataDownload", "encodingFormat": "text/csv", "name": "btb_parallel_sentence.csv",
+       "contentUrl": "https://raw.githubusercontent.com/FeliksMakarios/batak-toba-korpus/main/data/btb_parallel_sentence.csv"}
+    ]
+  } | tojson }}</script>
+  {% elif page and page.meta and page.meta.dataset == "ud" %}
+  <script type="application/ld+json">{{ {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Pedoman Anotasi Universal Dependencies untuk Bahasa Batak Toba",
+    "description": "Universal Dependencies annotation guideline for Batak Toba (bbc), with 250 pilot sentences selected for double annotation and a CoNLL-U template, developed at Universitas Pelita Harapan.",
+    "url": situs ~ "anotasi-ud/",
+    "sameAs": "https://github.com/FeliksMakarios/batak-toba-corpus-v2",
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "isAccessibleForFree": true,
+    "creator": pembuat,
+    "inLanguage": ["bbc", "id"],
+    "keywords": ["Batak Toba", "Universal Dependencies", "annotation guidelines", "treebank", "low-resource language"],
+    "distribution": [
+      {"@type": "DataDownload", "encodingFormat": "text/csv", "name": "daftar-250-kalimat-pilot.csv",
+       "contentUrl": "https://raw.githubusercontent.com/FeliksMakarios/batak-toba-corpus-v2/main/anotasi-ud/pilot/daftar-250-kalimat-pilot.csv"},
+      {"@type": "DataDownload", "encodingFormat": "text/plain", "name": "btk_pilot_250_template.conllu",
+       "contentUrl": "https://raw.githubusercontent.com/FeliksMakarios/batak-toba-corpus-v2/main/anotasi-ud/pilot/btk_pilot_250_template.conllu"}
+    ]
+  } | tojson }}</script>
+  {% endif %}
 {% endblock %}
 
 {% block libs %}

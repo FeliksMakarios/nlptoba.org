@@ -1,0 +1,4 @@
+# Commit batak-toba-korpus yang terakhir ditinjau saat docs/korpus/ ditulis.
+# Setelah meninjau ulang halaman korpus, ganti baris di bawah dengan commit terbaru:
+#   git -C sumber/batak-toba-korpus rev-parse HEAD
+23cfc304920a7b0ba41a8142724a8d7e968fdcae

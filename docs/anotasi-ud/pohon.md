@@ -1,4 +1,5 @@
 ---
+description: "Pohon dependensi Universal Dependencies untuk contoh kalimat Batak Toba dari pedoman anotasi, dengan arti setiap relasi."
 title: Pohon dependensi
 ---
 

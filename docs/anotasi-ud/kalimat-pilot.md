@@ -1,4 +1,5 @@
 ---
+description: "Jelajahi 250 kalimat pilot Batak Toba untuk anotasi Universal Dependencies, dengan filter genre, batch, konstruksi, dan pencarian kata."
 title: Kalimat pilot
 ---
 

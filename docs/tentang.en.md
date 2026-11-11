@@ -1,4 +1,5 @@
 ---
+description: "Researcher, funding, licenses, how to cite, and how to give feedback on the Batak Toba NLP project."
 title: About
 ---
 
@@ -27,6 +28,28 @@ The project involves a language expert and native Batak Toba annotators. Their n
 | Source code of this site | MIT |
 
 This site republishes the research repositories without changing their licenses.
+
+## How to cite
+
+If you use the corpus or the guideline, please cite the source repository. For the guideline, also state the version you used, which is listed on the [News](kabar.md) page. The copy button is at the top right of the block below.
+
+```bibtex
+@misc{samosir2025korpus,
+  author       = {Samosir, Feliks Victor Parningotan},
+  title        = {Korpus Bahasa Batak Toba},
+  year         = {2025},
+  publisher    = {Universitas Pelita Harapan},
+  howpublished = {\url{https://github.com/FeliksMakarios/batak-toba-korpus}}
+}
+
+@misc{samosir2026pedoman,
+  author       = {Samosir, Feliks Victor Parningotan},
+  title        = {batak-toba-corpus-v2: Pedoman Anotasi Universal Dependencies untuk Bahasa Batak Toba},
+  year         = {2026},
+  publisher    = {Universitas Pelita Harapan},
+  howpublished = {\url{https://github.com/FeliksMakarios/batak-toba-corpus-v2}}
+}
+```
 
 ## Contributing and feedback
 

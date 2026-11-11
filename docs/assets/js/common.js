@@ -73,7 +73,72 @@
     });
   }
 
+  // Kotak "Versi data di situs ini" di halaman Kabar, dibaca dari sumber.json hasil build.
+  function sumber() {
+    var box = document.getElementById("nt-sumber");
+    if (!box) return;
+    var S = {
+      id: { guide: "Versi pedoman", v2: "Commit batak-toba-corpus-v2", korpus: "Commit batak-toba-korpus",
+            built: "Situs dibangun", fail: "Data versi tidak dapat dimuat." },
+      en: { guide: "Guideline version", v2: "batak-toba-corpus-v2 commit", korpus: "batak-toba-korpus commit",
+            built: "Site built", fail: "Version data could not be loaded." }
+    }[lang()];
+    fetch(dataUrl("sumber.json"))
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (d) {
+        function commit(repo, sha) {
+          return sha ? el("a", { href: "https://github.com/FeliksMakarios/" + repo + "/commit/" + sha },
+            [el("code", { text: sha.slice(0, 7) })]) : el("span", { text: "-" });
+        }
+        var rows = [
+          [S.guide, el("span", { text: d.versi_pedoman || "-" })],
+          [S.v2, commit("batak-toba-corpus-v2", d["batak-toba-corpus-v2"])],
+          [S.korpus, commit("batak-toba-korpus", d["batak-toba-korpus"])]
+        ];
+        if (d.tanggal_build) rows.push([S.built, el("span", { text: d.tanggal_build })]);
+        box.appendChild(el("dl", { class: "nt-facts" }, [].concat.apply([], rows.map(function (r) {
+          return [el("dt", { text: r[0] }), el("dd", {}, [r[1]])];
+        }))));
+      })
+      .catch(function () { box.textContent = S.fail; });
+  }
+
+  // Peta jalan di layar sempit: tahun yang belum berjalan dilipat, dan tab tahun menjadi
+  // tombol untuk membukanya. Di layar lebar semua tahun terbuka tanpa tombol.
+  function roadmap() {
+    var years = document.querySelectorAll(".nt-roadmap .nt-year");
+    if (!years.length) return;
+    var narrow = window.matchMedia("(max-width: 59.984375em)");
+    function apply() {
+      years.forEach(function (y, i) {
+        var tab = y.querySelector(".nt-year-tab"), body = y.querySelector(".nt-year-body");
+        var btn = tab.querySelector("button");
+        if (narrow.matches && !btn) {
+          body.id = body.id || "nt-tahun-" + (i + 1);
+          btn = el("button", { type: "button", class: "nt-year-toggle", "aria-controls": body.id, text: tab.textContent });
+          tab.textContent = "";
+          tab.appendChild(btn);
+          var open = y.classList.contains("is-current");
+          btn.setAttribute("aria-expanded", String(open));
+          y.classList.toggle("is-folded", !open);
+          btn.addEventListener("click", function () {
+            var now = btn.getAttribute("aria-expanded") !== "true";
+            btn.setAttribute("aria-expanded", String(now));
+            y.classList.toggle("is-folded", !now);
+          });
+        } else if (!narrow.matches && btn) {
+          tab.textContent = btn.textContent;
+          y.classList.remove("is-folded");
+        }
+      });
+    }
+    apply();
+    if (narrow.addEventListener) narrow.addEventListener("change", apply);
+  }
+
   function init() {
+    sumber();
+    roadmap();
     var search = document.querySelector(".md-search");
     if (search && !search.getAttribute("aria-label")) search.setAttribute("aria-label", A.search);
     markScrollable();

@@ -1,4 +1,6 @@
 ---
+dataset: ud
+description: "Stage 2 of the Batak Toba NLP project: Universal Dependencies annotation guideline, 250 pilot sentences, and key decisions on predicate-initial order and Austronesian voice."
 title: Universal Dependencies Annotation (Stage 2)
 ---
 
@@ -63,7 +65,7 @@ Before this project, Batak Toba had no treebank, no part-of-speech or dependency
 
     Working version v1 (1,505 units) is the source of the 250 pilot sentences. As a parallel corpus, it has been superseded by the final corpus of 1,542 pairs, 182 of them human-validated.
 
-    [:octicons-arrow-right-24: View the final corpus](../korpus/index.md#sentence-level-parallel-corpus)
+    [:octicons-arrow-right-24: View the final corpus](../korpus/paralel.md)
 
 </div>
 

@@ -23,6 +23,8 @@ Situs ini tidak menyimpan salinan data penelitian. Setiap build mengambil berkas
 mkdocs.yml                  Konfigurasi situs, navigasi, dan terjemahan menu
 requirements.txt            Versi MkDocs dan plugin
 scripts/sync_sources.py     Menyalin berkas dari repo penelitian ke docs/
+scripts/cek_tautan.py       Memeriksa tautan internal di hasil build
+scripts/korpus_ditinjau.txt Commit repo korpus yang terakhir ditinjau untuk halaman korpus
 hooks/indeks_pencarian.py   Memisahkan indeks pencarian per bahasa setelah build
 overrides/                  Penyesuaian templat tema (halaman 404, tautan repositori, pencarian)
 docs/
@@ -62,6 +64,42 @@ Setiap halaman punya dua berkas: `nama.md` (Indonesia) dan `nama.en.md` (Inggris
 1. Setiap push ke cabang `main` repo ini.
 2. Setiap hari pukul 00.17 UTC, untuk mengambil perubahan dari repo penelitian.
 3. Secara manual lewat tab Actions, workflow "Bangun dan terbitkan situs", tombol "Run workflow".
+4. Saat repo penelitian mengirim `repository_dispatch` bertipe `sumber-diperbarui` (lihat di bawah).
+
+Setiap pull request juga dibangun dan diperiksa tautannya, tetapi tidak diterbitkan.
+
+### Jadwal harian bisa berhenti sendiri
+
+GitHub menonaktifkan jadwal workflow pada repo publik yang tidak mendapat commit selama 60 hari. Bila situs berhenti mengikuti repo penelitian, buka tab Actions, pilih workflow "Bangun dan terbitkan situs", lalu klik "Enable workflow".
+
+Agar situs diperbarui segera setelah repo penelitian berubah, tanpa bergantung pada jadwal, tambahkan workflow berikut di `batak-toba-corpus-v2` dan `batak-toba-korpus`:
+
+1. Buat fine-grained personal access token yang hanya berlaku untuk repo `nlptoba.org`, dengan izin Contents: Read and write.
+2. Simpan token itu sebagai secret `NLPTOBA_DISPATCH_TOKEN` di repo penelitian.
+3. Tambahkan berkas `.github/workflows/beri-tahu-situs.yml`:
+
+   ```yaml
+   name: Beri tahu situs nlptoba.org
+   on:
+     push:
+       branches: [main]
+   jobs:
+     kirim:
+       runs-on: ubuntu-latest
+       steps:
+         - run: >-
+             curl -sSf -X POST
+             -H "Authorization: Bearer ${{ secrets.NLPTOBA_DISPATCH_TOKEN }}"
+             -H "Accept: application/vnd.github+json"
+             https://api.github.com/repos/FeliksMakarios/nlptoba.org/dispatches
+             -d '{"event_type":"sumber-diperbarui"}'
+   ```
+
+### Halaman korpus ditulis manual
+
+Halaman `docs/korpus/` merangkum repo `batak-toba-korpus` secara manual. Setiap build membandingkan `README.md`, `data/`, `docs/`, dan `metadata/` di repo korpus dengan commit yang tercatat di `scripts/korpus_ditinjau.txt`. Bila ada yang berubah, log build memuat peringatan "Halaman korpus perlu ditinjau" beserta daftar berkasnya. Build tetap berjalan.
+
+Setelah meninjau dan memperbarui halaman korpus, ganti commit di `scripts/korpus_ditinjau.txt` dengan commit terbaru repo korpus.
 
 ## Menambah tahap penelitian baru
 
