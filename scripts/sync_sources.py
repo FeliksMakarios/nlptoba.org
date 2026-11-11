@@ -10,7 +10,9 @@ Pemakaian:
 """
 
 import argparse
+import datetime
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -20,6 +22,11 @@ PEDOMAN_DIR = "anotasi-ud/pedoman"
 PEDOMAN_REPO = "https://github.com/FeliksMakarios/batak-toba-corpus-v2/tree/main/anotasi-ud/pedoman/"
 PILOT_CSV = "anotasi-ud/pilot/daftar-250-kalimat-pilot.csv"
 PILOT_TEMPLATE = "anotasi-ud/pilot/btk_pilot_250_template.conllu"
+# Commit batak-toba-korpus yang terakhir ditinjau saat halaman docs/korpus/ ditulis.
+KORPUS_DITINJAU = Path(__file__).with_name("korpus_ditinjau.txt")
+# Berkas repo korpus yang isinya dirangkum secara manual di halaman korpus.
+KORPUS_DIPANTAU = ["README.md", "data", "docs", "metadata"]
+DAFTAR_ISI = {"id": "Daftar isi", "en": "Contents"}
 
 
 def commit_of(repo: Path) -> str:
@@ -31,6 +38,43 @@ def commit_of(repo: Path) -> str:
         return out.stdout.strip()
     except (subprocess.CalledProcessError, FileNotFoundError):
         return ""
+
+
+def korpus_changes(korpus: Path):
+    """Daftar berkas repo korpus yang berubah sejak commit yang tercatat di KORPUS_DITINJAU.
+
+    Halaman korpus ditulis manual, jadi perubahan di repo korpus tidak otomatis tampil.
+    Hasilnya dipakai untuk memberi peringatan pada log build, bukan untuk menggagalkan build.
+    """
+    if not KORPUS_DITINJAU.exists():
+        return None
+    lines = [l.strip() for l in KORPUS_DITINJAU.read_text(encoding="utf-8").splitlines()]
+    reviewed = next((l for l in lines if l and not l.startswith("#")), "")
+    try:
+        out = subprocess.run(
+            ["git", "-C", str(korpus), "diff", "--name-only", reviewed, "HEAD", "--", *KORPUS_DIPANTAU],
+            capture_output=True, text=True, check=True,
+        )
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return None
+    return [f for f in out.stdout.splitlines() if f]
+
+
+def warn(message: str) -> None:
+    # Di GitHub Actions, baris ::warning:: tampil sebagai anotasi pada ringkasan workflow.
+    prefix = "::warning title=Halaman korpus perlu ditinjau::" if os.environ.get("GITHUB_ACTIONS") else "PERINGATAN: "
+    print(prefix + message)
+
+
+def with_front_matter(text: str, description: str, toc_title: str) -> str:
+    """Tambahkan deskripsi halaman dan daftar isi lipat setelah judul pedoman."""
+    lines = text.splitlines()
+    toc = f'??? abstract "{toc_title}"\n\n    [TOC]\n'
+    if lines and lines[0].startswith("# "):
+        body = lines[0] + "\n\n" + toc + "\n" + "\n".join(lines[1:])
+    else:
+        body = toc + "\n" + text
+    return f"---\ndescription: {json.dumps(description, ensure_ascii=False)}\n---\n\n{body}\n"
 
 
 def latest_pedoman(v2: Path):
@@ -121,12 +165,17 @@ def english_wrapper(pedoman: str, version: str, docx: str) -> str:
     title = lines[0].lstrip("# ").strip() if lines and lines[0].startswith("# ") else ""
     body = "\n".join(lines[1:] if title else lines)
     return (
+        "---\ndescription: "
+        + json.dumps(f"Universal Dependencies annotation guideline for Batak Toba, version {version}: "
+                     "part-of-speech tags, morphological features, and dependency relations, following Nababan (1981).")
+        + "\n---\n\n"
         f"# Batak Toba UD Annotation Guideline (v{version})\n\n"
         '!!! info "Available in Indonesian only"\n'
         "    The guideline below is written in Indonesian, the working language of the annotators. "
         "It defines how part-of-speech tags, morphological features, and dependency relations of "
         "Universal Dependencies v2 are applied to Batak Toba, following Nababan (1981). "
         f"The Word version is also available: [{docx}]({docx}).\n\n"
+        f'??? abstract "{DAFTAR_ISI["en"]}"\n\n    [TOC]\n\n'
         '<div lang="id" markdown>\n\n'
         f"**{title}**\n\n{body}\n\n</div>\n"
     )
@@ -146,7 +195,9 @@ def main() -> None:
     version, pedoman_md, pedoman_docx = latest_pedoman(args.v2)
     pedoman = pedoman_md.read_text(encoding="utf-8")
     pedoman_situs = absolutize_links(pedoman, pedoman_docx.name)
-    (ud / "pedoman.md").write_text(pedoman_situs, encoding="utf-8")
+    deskripsi = (f"Pedoman anotasi Universal Dependencies untuk bahasa Batak Toba versi {version}: "
+                 "kelas kata, fitur morfologis, dan relasi dependensi, berbasis Nababan (1981).")
+    (ud / "pedoman.md").write_text(with_front_matter(pedoman_situs, deskripsi, DAFTAR_ISI["id"]), encoding="utf-8")
     (ud / "pedoman.en.md").write_text(english_wrapper(pedoman_situs, version, pedoman_docx.name), encoding="utf-8")
     for old in ud.glob("Pedoman_Anotasi_UD_BatakToba_v*.docx"):
         old.unlink()
@@ -155,10 +206,20 @@ def main() -> None:
     shutil.copy2(args.v2 / PILOT_TEMPLATE, data / "templat-pilot.conllu")
     (data / "contoh-pedoman.conllu").write_text(examples_to_conllu(pedoman, version), encoding="utf-8")
 
+    berubah = korpus_changes(args.korpus)
+    if berubah is None:
+        warn("Tidak dapat membandingkan repo korpus dengan commit di scripts/korpus_ditinjau.txt.")
+    elif berubah:
+        warn("Repo batak-toba-korpus berubah sejak halaman korpus terakhir ditinjau: "
+             + ", ".join(berubah[:10]) + (" ..." if len(berubah) > 10 else "")
+             + ". Tinjau docs/korpus/ lalu perbarui scripts/korpus_ditinjau.txt.")
+
     sumber = {
         "versi_pedoman": version,
         "batak-toba-corpus-v2": commit_of(args.v2),
         "batak-toba-korpus": commit_of(args.korpus),
+        "tanggal_build": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d"),
+        "korpus_berubah_sejak_ditinjau": berubah or [],
     }
     (data / "sumber.json").write_text(json.dumps(sumber, indent=2) + "\n", encoding="utf-8")
     print("Sumber disalin:", json.dumps(sumber))
