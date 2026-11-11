@@ -54,16 +54,17 @@
   // Aksesibilitas: area yang dapat digulir ke samping harus bisa dijangkau papan ketik,
   // dan kotak dialog pencarian milik tema perlu nama.
   var A = {
-    id: { table: "Tabel, dapat digulir ke samping", search: "Pencarian" },
-    en: { table: "Table, scrollable horizontally", search: "Search" }
+    id: { table: "Tabel {n}, dapat digulir ke samping", search: "Pencarian" },
+    en: { table: "Table {n}, scrollable horizontally", search: "Search" }
   }[lang()];
 
   function markScrollable() {
-    document.querySelectorAll(".md-typeset__scrollwrap").forEach(function (w) {
+    document.querySelectorAll(".md-typeset__scrollwrap").forEach(function (w, i) {
       if (w.scrollWidth > w.clientWidth + 1) {
         w.setAttribute("tabindex", "0");
         w.setAttribute("role", "region");
-        w.setAttribute("aria-label", A.table);
+        // Nomor urut membuat setiap area bernama unik bagi pembaca layar.
+        w.setAttribute("aria-label", A.table.replace("{n}", i + 1));
       } else {
         w.removeAttribute("tabindex");
         w.removeAttribute("role");

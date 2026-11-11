@@ -39,8 +39,10 @@ def on_post_build(config, **kwargs):
             continue
         loc = "en/" + d["location"] if _page(d["location"]) in en_pages else d["location"]
         en.append(dict(d, location=loc))
-    for lang, entries, langs in (("id", idn, ["id"]), ("en", en, ["en"])):
-        out = dict(data, docs=entries, config=dict(data["config"], lang=langs))
+    # Konfigurasi bahasa lunr tidak diubah: lunr tidak mendukung bahasa Indonesia,
+    # dan tema akan gagal memuat modul lunr.id bila "id" dicantumkan.
+    for lang, entries in (("id", idn), ("en", en)):
+        out = dict(data, docs=entries)
         (path.parent / f"search_index.{lang}.json").write_text(
             json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
         )

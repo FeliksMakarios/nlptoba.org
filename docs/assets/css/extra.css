@@ -114,7 +114,7 @@
 }
 .md-typeset .nt-status--done { color: var(--nt-done); }
 .md-typeset .nt-status--run { color: var(--nt-run); }
-.md-typeset .nt-status--plan { color: var(--md-default-fg-color--light); }
+.md-typeset .nt-status--plan { color: var(--nt-muted); }
 
 /* Kartu luaran pada halaman tahap */
 .md-typeset .grid.cards > ul > li {
