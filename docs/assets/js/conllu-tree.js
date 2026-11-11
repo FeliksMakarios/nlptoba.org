@@ -5,8 +5,8 @@
   var T = window.NlpToba;
   var SVG = "http://www.w3.org/2000/svg";
   var L = {
-    id: { pick: "Pilih kalimat", fail: "Data gagal dimuat.", table: "Lihat tabel CoNLL-U", loading: "Memuat data..." },
-    en: { pick: "Choose a sentence", fail: "Failed to load data.", table: "Show CoNLL-U table", loading: "Loading data..." }
+    id: { pick: "Pilih kalimat", fail: "Data gagal dimuat.", table: "Lihat tabel CoNLL-U", loading: "Memuat data...", scroll: "Diagram pohon dependensi, dapat digulir ke samping" },
+    en: { pick: "Choose a sentence", fail: "Failed to load data.", table: "Show CoNLL-U table", loading: "Loading data...", scroll: "Dependency tree diagram, scrollable horizontally" }
   }[T.lang()];
 
   function parse(text) {
@@ -120,7 +120,7 @@
     }));
     return T.el("details", { class: "dep-table" }, [
       T.el("summary", { text: L.table }),
-      T.el("div", { class: "dep-table-wrap" }, [T.el("table", {}, [
+      T.el("div", { class: "dep-table-wrap", tabindex: "0", role: "region", "aria-label": L.table }, [T.el("table", {}, [
         T.el("thead", {}, [T.el("tr", {}, cols.map(function (c) { return T.el("th", { text: c }); }))]),
         tbody
       ])])
@@ -146,7 +146,7 @@
           view.textContent = "";
           view.appendChild(T.el("p", { class: "dep-text", lang: "bbc", text: s.meta.text || "" }));
           if (s.meta.text_id) view.appendChild(T.el("p", { class: "dep-gloss", lang: "id", text: "‘" + s.meta.text_id + "’" }));
-          view.appendChild(T.el("div", { class: "dep-scroll" }, [draw(s)]));
+          view.appendChild(T.el("div", { class: "dep-scroll", tabindex: "0", role: "region", "aria-label": L.scroll }, [draw(s)]));
           view.appendChild(table(s));
         }
         sel.addEventListener("change", show);

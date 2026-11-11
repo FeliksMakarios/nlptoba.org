@@ -23,6 +23,8 @@ Situs ini tidak menyimpan salinan data penelitian. Setiap build mengambil berkas
 mkdocs.yml                  Konfigurasi situs, navigasi, dan terjemahan menu
 requirements.txt            Versi MkDocs dan plugin
 scripts/sync_sources.py     Menyalin berkas dari repo penelitian ke docs/
+hooks/indeks_pencarian.py   Memisahkan indeks pencarian per bahasa setelah build
+overrides/                  Penyesuaian templat tema (halaman 404, tautan repositori, pencarian)
 docs/
 ├── index.md                Beranda (index.en.md untuk versi Inggris)
 ├── korpus/                 Tahap 1

@@ -68,7 +68,7 @@ def split_row(line: str) -> list:
     return [unescape_cell(c) for c in cells]
 
 
-def examples_to_conllu(pedoman: str) -> str:
+def examples_to_conllu(pedoman: str, version: str) -> str:
     """Ubah tabel Bagian 8 pedoman menjadi CoNLL-U untuk penampil pohon."""
     start = pedoman.find("## 8.")
     end = pedoman.find("\n## 9.", start)
@@ -76,7 +76,7 @@ def examples_to_conllu(pedoman: str) -> str:
         raise SystemExit("Bagian 8 pedoman tidak ditemukan. Periksa format pedoman.")
     lines = pedoman[start:end].splitlines()
 
-    out = ["# newdoc id = contoh_pedoman_v1.0"]
+    out = [f"# newdoc id = contoh_pedoman_v{version}"]
     title = text = gloss = None
     rows = []
 
@@ -115,6 +115,23 @@ def examples_to_conllu(pedoman: str) -> str:
     return "\n".join(out) + "\n"
 
 
+def english_wrapper(pedoman: str, version: str, docx: str) -> str:
+    """Halaman Inggris: pengantar berbahasa Inggris, lalu isi pedoman bertanda lang="id"."""
+    lines = pedoman.splitlines()
+    title = lines[0].lstrip("# ").strip() if lines and lines[0].startswith("# ") else ""
+    body = "\n".join(lines[1:] if title else lines)
+    return (
+        f"# Batak Toba UD Annotation Guideline (v{version})\n\n"
+        '!!! info "Available in Indonesian only"\n'
+        "    The guideline below is written in Indonesian, the working language of the annotators. "
+        "It defines how part-of-speech tags, morphological features, and dependency relations of "
+        "Universal Dependencies v2 are applied to Batak Toba, following Nababan (1981). "
+        f"The Word version is also available: [{docx}]({docx}).\n\n"
+        '<div lang="id" markdown>\n\n'
+        f"**{title}**\n\n{body}\n\n</div>\n"
+    )
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--v2", required=True, type=Path)
@@ -128,13 +145,15 @@ def main() -> None:
 
     version, pedoman_md, pedoman_docx = latest_pedoman(args.v2)
     pedoman = pedoman_md.read_text(encoding="utf-8")
-    (ud / "pedoman.md").write_text(absolutize_links(pedoman, pedoman_docx.name), encoding="utf-8")
+    pedoman_situs = absolutize_links(pedoman, pedoman_docx.name)
+    (ud / "pedoman.md").write_text(pedoman_situs, encoding="utf-8")
+    (ud / "pedoman.en.md").write_text(english_wrapper(pedoman_situs, version, pedoman_docx.name), encoding="utf-8")
     for old in ud.glob("Pedoman_Anotasi_UD_BatakToba_v*.docx"):
         old.unlink()
     shutil.copy2(pedoman_docx, ud / pedoman_docx.name)
     shutil.copy2(args.v2 / PILOT_CSV, data / "kalimat-pilot.csv")
     shutil.copy2(args.v2 / PILOT_TEMPLATE, data / "templat-pilot.conllu")
-    (data / "contoh-pedoman.conllu").write_text(examples_to_conllu(pedoman), encoding="utf-8")
+    (data / "contoh-pedoman.conllu").write_text(examples_to_conllu(pedoman, version), encoding="utf-8")
 
     sumber = {
         "versi_pedoman": version,

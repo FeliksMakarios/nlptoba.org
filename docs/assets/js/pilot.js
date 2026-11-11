@@ -72,6 +72,9 @@
 
   function render(rows) {
     box.textContent = "";
+    // Data pilot masih memakai label lama "Historical/ Traditional". Spasi setelah
+    // garis miring dirapikan agar sama dengan label di halaman korpus.
+    rows.forEach(function (r) { r.genre = r.genre.replace(/\s*\/\s*/g, "/"); });
     var cons = [];
     rows.forEach(function (r) { cons = cons.concat(r.indikasi_konstruksi.split(", ")); });
 
