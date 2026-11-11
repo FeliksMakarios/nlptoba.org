@@ -87,6 +87,22 @@ Langkah ini dilakukan sekali oleh pemilik repo.
    | AAAA | `@` | `2606:50c0:8003::153` |
    | CNAME | `www` | `feliksmakarios.github.io` |
 
+   Selain record di atas, jangan ada record A atau AAAA lain untuk `@` maupun `www`. Banyak penyedia domain menambahkan record parkir secara otomatis, misalnya `2.57.91.91`. Hapus record itu dan matikan fitur parkir atau pengalihan domain. Arahkan `www` ke `feliksmakarios.github.io`, bukan ke `nlptoba.org`. Kalau masih ada record lain, pemeriksaan DNS GitHub tidak pernah lulus dan sertifikat HTTPS tidak terbit. Periksa hasilnya dengan:
+
+   ```bash
+   dig +short nlptoba.org A
+   dig +short www.nlptoba.org
+   ```
+
+   Perintah pertama hanya boleh mengembalikan empat alamat `185.199.x.153`, dan baris pertama perintah kedua harus `feliksmakarios.github.io.`
+
 3. **Verifikasi domain.** Di Settings akun GitHub (bukan repo), buka Pages, lalu Add a domain, isi `nlptoba.org`, dan tambahkan TXT record yang diberikan GitHub. Langkah ini mencegah domain dipakai repo milik orang lain.
 4. **Settings, Pages, Custom domain.** Isi `nlptoba.org`, lalu Save.
 5. Setelah pemeriksaan DNS berhasil, centang **Enforce HTTPS**. Sertifikat biasanya terbit dalam beberapa menit sampai satu jam.
+6. Kalau peramban masih menampilkan sertifikat `*.github.io` dan bukan `nlptoba.org`, sertifikat baru belum tersebar ke semua server GitHub. Periksa sertifikat yang dikirim server dengan perintah berikut:
+
+   ```bash
+   openssl s_client -connect nlptoba.org:443 -servername nlptoba.org </dev/null 2>/dev/null | openssl x509 -noout -subject -ext subjectAltName
+   ```
+
+   Kalau hasilnya masih `*.github.io` setelah beberapa jam, hapus centang Enforce HTTPS, klik Remove pada Custom domain, isi lagi `nlptoba.org`, lalu Save untuk memicu penerbitan ulang.
