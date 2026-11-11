@@ -385,6 +385,32 @@
 @media screen and (max-width: 59.984375em) {
   .md-typeset .nt-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .md-typeset .nt-roadmap { grid-template-columns: 1fr; }
+  .md-typeset .nt-year.is-folded :is(.nt-year-body, .nt-year-foot) { display: none; }
+  .md-typeset .nt-year-tab { padding: 0; }
+  .md-typeset .nt-year-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0.55rem 0.7rem;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+  .md-typeset .nt-year-toggle::after {
+    content: "";
+    width: 0.45rem;
+    height: 0.45rem;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+    transition: transform 120ms;
+  }
+  .md-typeset .nt-year-toggle[aria-expanded="false"]::after { transform: rotate(-45deg); }
+  .md-typeset .nt-year-toggle:focus-visible { outline: 2px solid currentColor; outline-offset: -4px; }
   .md-typeset .nt-stages { grid-template-columns: 1fr; }
   .md-typeset .nt-flow { flex-direction: column; }
   .md-typeset .nt-step,

@@ -103,8 +103,42 @@
       .catch(function () { box.textContent = S.fail; });
   }
 
+  // Peta jalan di layar sempit: tahun yang belum berjalan dilipat, dan tab tahun menjadi
+  // tombol untuk membukanya. Di layar lebar semua tahun terbuka tanpa tombol.
+  function roadmap() {
+    var years = document.querySelectorAll(".nt-roadmap .nt-year");
+    if (!years.length) return;
+    var narrow = window.matchMedia("(max-width: 59.984375em)");
+    function apply() {
+      years.forEach(function (y, i) {
+        var tab = y.querySelector(".nt-year-tab"), body = y.querySelector(".nt-year-body");
+        var btn = tab.querySelector("button");
+        if (narrow.matches && !btn) {
+          body.id = body.id || "nt-tahun-" + (i + 1);
+          btn = el("button", { type: "button", class: "nt-year-toggle", "aria-controls": body.id, text: tab.textContent });
+          tab.textContent = "";
+          tab.appendChild(btn);
+          var open = y.classList.contains("is-current");
+          btn.setAttribute("aria-expanded", String(open));
+          y.classList.toggle("is-folded", !open);
+          btn.addEventListener("click", function () {
+            var now = btn.getAttribute("aria-expanded") !== "true";
+            btn.setAttribute("aria-expanded", String(now));
+            y.classList.toggle("is-folded", !now);
+          });
+        } else if (!narrow.matches && btn) {
+          tab.textContent = btn.textContent;
+          y.classList.remove("is-folded");
+        }
+      });
+    }
+    apply();
+    if (narrow.addEventListener) narrow.addEventListener("change", apply);
+  }
+
   function init() {
     sumber();
+    roadmap();
     var search = document.querySelector(".md-search");
     if (search && !search.getAttribute("aria-label")) search.setAttribute("aria-label", A.search);
     markScrollable();
