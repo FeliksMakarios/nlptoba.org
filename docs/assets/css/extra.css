@@ -29,6 +29,12 @@
   --nt-plan-bg: color-mix(in srgb, var(--nt-y5) 28%, var(--md-default-bg-color));
   --nt-note: #5b5250;
   --nt-bar: #8c2b25;
+  /* Warna sintaks yang memakai teks redup tema terlalu pucat di latar blok kode */
+  --md-code-hl-comment-color: #5e5753;
+  --md-code-hl-generic-color: #5e5753;
+  --md-code-hl-operator-color: #5e5753;
+  --md-code-hl-punctuation-color: #5e5753;
+  --md-code-hl-variable-color: #5e5753;
 }
 
 [data-md-color-scheme="slate"] {
