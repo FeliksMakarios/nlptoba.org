@@ -27,7 +27,7 @@ Sampai penelitian ini dimulai, Batak Toba belum memiliki treebank, anotasi kelas
   <div class="nt-step nt-y1"><span class="nt-step-title">Korpus Tahap 1</span><span class="nt-step-note">Korpus multi-genre hasil hibah 2025.</span><span class="nt-step-state">Selesai</span></div>
   <div class="nt-step nt-y2"><span class="nt-step-title">Sintesis Keputusan</span><span class="nt-step-note">Kajian UD v2, UD Indonesia, Tagalog, dan Cebuano.</span><span class="nt-step-state">Selesai</span></div>
   <div class="nt-step nt-y3"><span class="nt-step-title">Pedoman v1.0 sampai v1.2</span><span class="nt-step-note">Pedoman dan contoh berlabel, diperbarui dengan masukan anotator.</span><span class="nt-step-state">Selesai</span></div>
-  <div class="nt-step nt-y4"><span class="nt-step-title">Anotasi Awal</span><span class="nt-step-note">250 kalimat oleh dua anotator, mulai 5 Oktober 2026.</span><span class="nt-step-state">Berjalan</span></div>
+  <div class="nt-step nt-y4 is-run"><span class="nt-step-title">Anotasi Awal</span><span class="nt-step-note">250 kalimat oleh dua anotator, mulai 5 Oktober 2026.</span><span class="nt-step-state">Berjalan</span></div>
   <div class="nt-step nt-y5 is-plan"><span class="nt-step-title">Evaluasi dan Revisi</span><span class="nt-step-note">Kesepakatan antaranotator dan pedoman v2.0, November 2026.</span><span class="nt-step-state">Rencana</span></div>
 </div>
 
