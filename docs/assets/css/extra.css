@@ -1,70 +1,159 @@
-/* Identitas visual: merah, putih, dan hitam khas Batak Toba (bonang manalu,
-   warna dasar gorga), dilembutkan menjadi marun, putih tulang, dan arang.
-   Lima warna tahun membentuk gradasi merah, putih, hitam. */
-:root {
-  --nt-y1: #8c2b25;
-  --nt-y2: #a9554a;
-  --nt-y3: #e8ddd0;
-  --nt-y4: #5b5250;
-  --nt-y5: #2a2221;
-  --nt-on-dark: #ffffff;
-  --nt-on-light: #1e1a19;
-}
+/* Palet tiga warna "Malam Toba" dengan pola 60-30-10:
+   60% putih kabut (latar), 30% biru malam (navigasi, judul, kartu, label),
+   10% merah gorga (tombol utama, menu aktif, status berjalan, sorotan).
+   Semua teks, garis tepi, teks redup, dan efek sorot diambil dari gradasi tiga warna ini.
+   Satu-satunya pengecualian adalah --nt-err untuk peringatan dan galat.
+   Pita ornamen di bawah kepala situs memakai merah gorga sebagai penanda Batak Toba. */
 
 :root,
 [data-md-color-scheme="default"] {
-  --md-primary-fg-color: #6b1f1b;
-  --md-primary-fg-color--light: #8c2b25;
-  --md-primary-fg-color--dark: #4f1512;
-  --md-accent-fg-color: #9a2c23;
-  --md-typeset-a-color: #9a2c23;
-  --md-default-bg-color: #fbf8f4;
-  --nt-card-bg: #f3ece5;
-  --nt-border: #e4d8cc;
-  --nt-band-bg: #f3ece5;
-  --nt-band-ink: #1e1a19;
-  --nt-done: #2f6b45;
-  --nt-run: #9a2c23;
-  --nt-muted: #5e5753;
-  --nt-plan-bg: color-mix(in srgb, var(--nt-y5) 28%, var(--md-default-bg-color));
-  --nt-note: #5b5250;
-  --nt-bar: #8c2b25;
-  /* Warna sintaks yang memakai teks redup tema terlalu pucat di latar blok kode */
-  --md-code-hl-comment-color: #5e5753;
-  --md-code-hl-generic-color: #5e5753;
-  --md-code-hl-operator-color: #5e5753;
-  --md-code-hl-punctuation-color: #5e5753;
-  --md-code-hl-variable-color: #5e5753;
+  /* Gradasi biru malam untuk lima tahun peta jalan, dari tahun pertama ke kelima */
+  --nt-y1: #1f2a44;
+  --nt-y2: #2e3b5c;
+  --nt-y3: #47557a;
+  --nt-y4: #a3adc2;
+  --nt-y5: #c9d4ee;
+  --nt-y1-ink: #ffffff;
+  --nt-y2-ink: #ffffff;
+  --nt-y3-ink: #ffffff;
+  --nt-y4-ink: #141a29;
+  --nt-y5-ink: #141a29;
+
+  --md-primary-fg-color: #1f2a44;
+  --md-primary-fg-color--light: #2e3b5c;
+  --md-primary-fg-color--dark: #141a29;
+  --md-primary-bg-color: #f6f7fa;
+  --md-primary-bg-color--light: #c9d4ee;
+  --md-accent-fg-color: #c8312b;
+  --md-accent-fg-color--transparent: rgba(200, 49, 43, 0.1);
+  --md-accent-bg-color: #ffffff;
+  --md-typeset-a-color: #b02a25;
+  --md-default-bg-color: #f6f7fa;
+  --md-default-fg-color: #141a29;
+  --md-default-fg-color--light: #566078;
+  --md-default-fg-color--lighter: #a3adc2;
+  --md-default-fg-color--lightest: #dce1eb;
+  --md-typeset-mark-color: #ffd9d4;
+  --md-typeset-table-color: #dce1eb;
+  --md-footer-bg-color: #141a29;
+  --md-footer-bg-color--dark: #0a0e18;
+  --md-footer-fg-color: #f6f7fa;
+  --md-footer-fg-color--light: #c9d4ee;
+  --md-footer-fg-color--lighter: #a3adc2;
+
+  --nt-head: #1f2a44;
+  --nt-card-bg: #eceff5;
+  --nt-border: #dce1eb;
+  --nt-label-bg: #e2e7f1;
+  --nt-muted: #566078;
+  --nt-note: #1f2a44;
+  --nt-bar: #1f2a44;
+  --nt-plan-bg: #e2e7f1;
+  --nt-ind: #ff7a6e;
+  --nt-on-accent: #ffffff;
+  --nt-accent-hover: #b02a25;
+  --nt-done-bg: #1f2a44;
+  --nt-done-ink: #ffffff;
+  --nt-err: #8c1d18;
+  --nt-band-bg: #f6f7fa;
+  --nt-band-line: #1f2a44;
+  --nt-band-motif: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='7' viewBox='0 0 22 7'%3E%3Cpath d='M5.5 0.8 L9.2 3.5 L5.5 6.2 L1.8 3.5 Z' fill='none' stroke='%23c8312b' stroke-width='1'/%3E%3Cpath d='M13.5 1 L18.5 6 M18.5 1 L13.5 6' stroke='%23c8312b' stroke-width='1.2'/%3E%3C/svg%3E");
+
+  /* Warna sintaks blok kode dari tiga gradasi palet */
+  --md-code-bg-color: #eceff5;
+  --md-code-fg-color: #141a29;
+  --md-code-hl-keyword-color: #1f2a44;
+  --md-code-hl-function-color: #1f2a44;
+  --md-code-hl-name-color: #141a29;
+  --md-code-hl-string-color: #2e4a8c;
+  --md-code-hl-constant-color: #b02a25;
+  --md-code-hl-number-color: #b02a25;
+  --md-code-hl-special-color: #b02a25;
+  --md-code-hl-comment-color: #566078;
+  --md-code-hl-generic-color: #566078;
+  --md-code-hl-operator-color: #566078;
+  --md-code-hl-punctuation-color: #566078;
+  --md-code-hl-variable-color: #566078;
 }
 
 [data-md-color-scheme="slate"] {
-  --md-primary-fg-color: #3a1512;
-  --md-primary-fg-color--light: #6b1f1b;
-  --md-primary-fg-color--dark: #2a0f0d;
-  --md-accent-fg-color: #e8958a;
-  --md-typeset-a-color: #e8958a;
-  --md-default-bg-color: #181414;
-  --nt-card-bg: #221d1c;
-  --nt-border: #3a3130;
-  --nt-band-bg: #221d1c;
-  --nt-band-ink: #000000;
-  --nt-done: #8fcfa4;
-  --nt-run: #e8958a;
-  --nt-muted: #bdb4b0;
-  --nt-plan-bg: var(--nt-border);
-  --nt-note: #b9b0ac;
-  --nt-bar: #e8958a;
+  /* Di mode gelap, gradasi dibalik agar tahun pertama tetap paling menonjol */
+  --nt-y1: #c9d4ee;
+  --nt-y2: #a3adc2;
+  --nt-y3: #566078;
+  --nt-y4: #2e3b5c;
+  --nt-y5: #222d49;
+  --nt-y1-ink: #0e1320;
+  --nt-y2-ink: #0e1320;
+  --nt-y3-ink: #ffffff;
+  --nt-y4-ink: #ffffff;
+  --nt-y5-ink: #ffffff;
+
+  --md-primary-fg-color: #1a2440;
+  --md-primary-fg-color--light: #2a3550;
+  --md-primary-fg-color--dark: #0e1320;
+  --md-primary-bg-color: #e8ecf4;
+  --md-primary-bg-color--light: #a3adc2;
+  --md-accent-fg-color: #ff6f61;
+  --md-accent-fg-color--transparent: rgba(255, 111, 97, 0.12);
+  --md-accent-bg-color: #0e1320;
+  --md-typeset-a-color: #ff8a7e;
+  --md-default-bg-color: #0e1320;
+  --md-default-fg-color: #e8ecf4;
+  --md-default-fg-color--light: #a3adc2;
+  --md-default-fg-color--lighter: #566078;
+  --md-default-fg-color--lightest: #2a3550;
+  --md-typeset-mark-color: #5a1f1a;
+  --md-typeset-table-color: #2a3550;
+  --md-footer-bg-color: #0a0e18;
+  --md-footer-bg-color--dark: #070a12;
+  --md-footer-fg-color: #e8ecf4;
+  --md-footer-fg-color--light: #c9d4ee;
+  --md-footer-fg-color--lighter: #a3adc2;
+
+  --nt-head: #c9d4ee;
+  --nt-card-bg: #161e31;
+  --nt-border: #2a3550;
+  --nt-label-bg: #222d49;
+  --nt-muted: #a3adc2;
+  --nt-note: #c9d4ee;
+  --nt-bar: #c9d4ee;
+  --nt-plan-bg: #222d49;
+  --nt-ind: #ff6f61;
+  --nt-on-accent: #0e1320;
+  --nt-accent-hover: #ff8a7e;
+  --nt-done-bg: #c9d4ee;
+  --nt-done-ink: #0e1320;
+  --nt-err: #ffb4ab;
+  --nt-band-bg: #161e31;
+  --nt-band-line: #0a0e18;
+  --nt-band-motif: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='7' viewBox='0 0 22 7'%3E%3Cpath d='M5.5 0.8 L9.2 3.5 L5.5 6.2 L1.8 3.5 Z' fill='none' stroke='%23ff6f61' stroke-width='1'/%3E%3Cpath d='M13.5 1 L18.5 6 M18.5 1 L13.5 6' stroke='%23ff6f61' stroke-width='1.2'/%3E%3C/svg%3E");
+
+  --md-code-bg-color: #161e31;
+  --md-code-fg-color: #e8ecf4;
+  --md-code-hl-keyword-color: #c9d4ee;
+  --md-code-hl-function-color: #c9d4ee;
+  --md-code-hl-name-color: #e8ecf4;
+  --md-code-hl-string-color: #9db4ee;
+  --md-code-hl-constant-color: #ff8a7e;
+  --md-code-hl-number-color: #ff8a7e;
+  --md-code-hl-special-color: #ff8a7e;
+  --md-code-hl-comment-color: #a3adc2;
+  --md-code-hl-generic-color: #a3adc2;
+  --md-code-hl-operator-color: #a3adc2;
+  --md-code-hl-punctuation-color: #a3adc2;
+  --md-code-hl-variable-color: #a3adc2;
 }
 
 /* Judul halaman lebih tegas: tebal dan bertinta penuh, bukan tipis abu-abu */
 .md-typeset h1 {
   font-weight: 700;
   letter-spacing: -0.01em;
-  color: var(--md-default-fg-color);
+  color: var(--nt-head);
 }
 .md-typeset h2 {
   font-weight: 400;
-  color: var(--md-default-fg-color);
+  color: var(--nt-head);
 }
 
 /* Tautan di dalam teks diberi garis bawah agar tidak hanya dibedakan oleh warna */
@@ -84,25 +173,50 @@
   bottom: -7px;
   height: 7px;
   background-color: var(--nt-band-bg);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='7' viewBox='0 0 22 7'%3E%3Cpath d='M5.5 0.8 L9.2 3.5 L5.5 6.2 L1.8 3.5 Z' fill='none' stroke='%231e1a19' stroke-width='1'/%3E%3Cpath d='M13.5 1 L18.5 6 M18.5 1 L13.5 6' stroke='%239a2c23' stroke-width='1.2'/%3E%3C/svg%3E");
+  background-image: var(--nt-band-motif);
   background-repeat: repeat-x;
-  border-bottom: 1px solid var(--nt-band-ink);
+  border-bottom: 1px solid var(--nt-band-line);
 }
 
-/* Tombol sekunder memakai warna tautan agar terbaca di mode terang dan gelap */
+/* Menu tab aktif ditandai garis aksen merah gorga */
+.md-tabs__item--active .md-tabs__link {
+  opacity: 1;
+  font-weight: 700;
+}
+.md-tabs__item--active {
+  box-shadow: inset 0 -3px 0 var(--nt-ind);
+}
+
+/* Tombol utama memakai aksen, tombol lain memakai warna kedua */
+.md-typeset .md-button--primary {
+  background-color: var(--md-accent-fg-color);
+  border-color: var(--md-accent-fg-color);
+  color: var(--nt-on-accent);
+}
+.md-typeset .md-button--primary:is(:hover, :focus) {
+  background-color: var(--nt-accent-hover);
+  border-color: var(--nt-accent-hover);
+  color: var(--nt-on-accent);
+}
+
 .md-typeset .md-button:not(.md-button--primary) {
-  color: var(--md-typeset-a-color);
+  color: var(--nt-head);
   border-color: currentColor;
 }
+.md-typeset .md-button:not(.md-button--primary):is(:hover, :focus) {
+  background-color: var(--nt-head);
+  border-color: var(--nt-head);
+  color: var(--md-default-bg-color);
+}
 
-/* Kotak catatan dan lipatan (details) berwarna arang netral. Merah hanya untuk
-   peringatan, agar catatan biasa tidak terbaca seperti peringatan. */
+/* Kotak catatan dan lipatan (details) memakai warna kedua. Peringatan dan galat memakai
+   --nt-err, satu-satunya warna di luar tiga warna dasar. */
 .md-typeset :is(.admonition, details) {
   --nt-adm: var(--nt-note);
   border-color: var(--nt-adm);
 }
 .md-typeset :is(.admonition, details):is(.warning, .caution, .attention, .danger, .error, .failure, .bug) {
-  --nt-adm: var(--md-accent-fg-color);
+  --nt-adm: var(--nt-err);
 }
 .md-typeset :is(.admonition, details) > :is(.admonition-title, summary) {
   background-color: color-mix(in srgb, var(--nt-adm) 10%, transparent);
@@ -123,8 +237,18 @@
   white-space: nowrap;
   border: 1px solid currentColor;
 }
-.md-typeset .nt-status--done { color: var(--nt-done); }
-.md-typeset .nt-status--run { color: var(--nt-run); }
+/* SELESAI: isi warna kedua. BERJALAN: isi aksen. RENCANA: garis redup.
+   Label selalu memuat kata, jadi status tidak bergantung pada warna saja. */
+.md-typeset .nt-status--done {
+  color: var(--nt-done-ink);
+  background: var(--nt-done-bg);
+  border-color: var(--nt-done-bg);
+}
+.md-typeset .nt-status--run {
+  color: var(--nt-on-accent);
+  background: var(--md-accent-fg-color);
+  border-color: var(--md-accent-fg-color);
+}
 .md-typeset .nt-status--plan { color: var(--nt-muted); }
 
 /* Kartu luaran pada halaman tahap */
@@ -149,7 +273,7 @@
   height: 0.6rem;
   margin-right: 0.4rem;
   border-radius: 50%;
-  background: var(--nt-y1);
+  background: var(--md-accent-fg-color);
   vertical-align: -0.05rem;
 }
 
@@ -183,7 +307,7 @@
   font-size: 2.4rem;
   font-weight: 700;
   line-height: 1.15;
-  color: var(--md-default-fg-color);
+  color: var(--nt-head);
 }
 .md-typeset .nt-hero .nt-lead {
   max-width: 40rem;
@@ -242,7 +366,7 @@
   overflow: hidden;
 }
 .md-typeset .nt-year.is-current {
-  box-shadow: 0 0 0 2px var(--nt-year);
+  box-shadow: 0 0 0 2px var(--md-accent-fg-color);
 }
 .md-typeset .nt-year-tab {
   margin: 0;
@@ -273,11 +397,11 @@
   padding: 0 0.7rem 0.7rem;
 }
 
-.nt-y1 { --nt-year: var(--nt-y1); --nt-year-ink: var(--nt-on-dark); }
-.nt-y2 { --nt-year: var(--nt-y2); --nt-year-ink: var(--nt-on-dark); }
-.nt-y3 { --nt-year: var(--nt-y3); --nt-year-ink: var(--nt-on-light); }
-.nt-y4 { --nt-year: var(--nt-y4); --nt-year-ink: var(--nt-on-dark); }
-.nt-y5 { --nt-year: var(--nt-y5); --nt-year-ink: var(--nt-on-dark); }
+.nt-y1 { --nt-year: var(--nt-y1); --nt-year-ink: var(--nt-y1-ink); }
+.nt-y2 { --nt-year: var(--nt-y2); --nt-year-ink: var(--nt-y2-ink); }
+.nt-y3 { --nt-year: var(--nt-y3); --nt-year-ink: var(--nt-y3-ink); }
+.nt-y4 { --nt-year: var(--nt-y4); --nt-year-ink: var(--nt-y4-ink); }
+.nt-y5 { --nt-year: var(--nt-y5); --nt-year-ink: var(--nt-y5-ink); }
 
 /* Kartu luaran per tahap */
 .md-typeset .nt-stages {
@@ -588,7 +712,7 @@
 .md-typeset .pilot-list mark {
   padding: 0 0.1em;
   color: inherit;
-  background: color-mix(in srgb, var(--nt-bar) 24%, transparent);
+  background: var(--md-typeset-mark-color);
   border-radius: 0.15em;
 }
 .pilot-item {
@@ -700,7 +824,7 @@
 .dep-arc { fill: none; stroke: var(--md-default-fg-color--light); stroke-width: 1.3; }
 .dep-head { fill: var(--md-default-fg-color--light); }
 .dep-label {
-  fill: var(--md-accent-fg-color);
+  fill: var(--nt-head);
   font-size: 12px;
   font-weight: 600;
   paint-order: stroke;
