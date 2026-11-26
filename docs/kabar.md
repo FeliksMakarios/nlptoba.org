@@ -15,8 +15,10 @@ Catatan perkembangan proyek, dari yang terbaru. Tanggal diambil dari riwayat rep
 
 | Tanggal | Kabar |
 |---|---|
-| Desember 2026 *(rencana)* | Revisi pedoman menjadi versi 2.0, artikel ilmiah, dan laporan akhir tahap 2. |
-| November 2026 *(rencana)* | Anotasi ganda 250 kalimat pilot selesai, lalu kesepakatan antaranotator dihitung. |
+| Desember 2026 *(rencana)* | Pedoman versi 2.0, rilis korpus 250 kalimat hasil adjudikasi, artikel ilmiah, dan laporan akhir tahap 2. |
+| Akhir November sampai Desember 2026 *(rencana)* | Penyelesaian anotasi, penghitungan ulang kesepakatan pada 250 kalimat, lalu adjudikasi bersama narasumber penutur asli. |
+| 26 November 2026 | [Kesepakatan antaranotator sementara](anotasi-ud/index.md#kesepakatan-antaranotator-sementara) dirilis di repositori: kappa kelas kata 0,864 dan kappa relasi 0,749 pada 90 kalimat. |
+| 21 November 2026 | Serah terima hasil anotasi ganda 250 kalimat pilot. Satu anotator belum menyelesaikan seluruh kalimat. Hasilnya diperiksa narasumber penutur asli pada 24 November. |
 | 11 November 2026 | Situs diperbarui: versi Inggris lengkap, pencarian per bahasa, penjelajah kalimat pilot berhalaman, dan pohon dependensi interaktif. |
 | 7 November 2026 | [Korpus paralel tingkat kalimat](korpus/paralel.md) final dirilis: 1.542 pasangan, 182 divalidasi manusia, beserta laporan kesepakatan antaranotator. |
 | 31 Oktober 2026 | Repositori [batak-toba-corpus-v2](https://github.com/FeliksMakarios/batak-toba-corpus-v2) dibuka untuk publik. |

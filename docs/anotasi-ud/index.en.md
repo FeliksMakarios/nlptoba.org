@@ -27,11 +27,36 @@ Before this project, Batak Toba had no treebank, no part-of-speech or dependency
   <div class="nt-step nt-y1"><span class="nt-step-title">Stage 1 corpus</span><span class="nt-step-note">Multi-genre corpus from the 2025 grant.</span><span class="nt-step-state">Done</span></div>
   <div class="nt-step nt-y2"><span class="nt-step-title">Decision synthesis</span><span class="nt-step-note">Review of UD v2 and the Indonesian, Tagalog, and Cebuano UD guidelines.</span><span class="nt-step-state">Done</span></div>
   <div class="nt-step nt-y3"><span class="nt-step-title">Guideline v1.0 to v1.2</span><span class="nt-step-note">Guideline and labelled examples, updated with annotator feedback.</span><span class="nt-step-state">Done</span></div>
-  <div class="nt-step nt-y4 is-run"><span class="nt-step-title">Pilot annotation</span><span class="nt-step-note">250 sentences by two annotators, since 5 October 2026.</span><span class="nt-step-state">In progress</span></div>
-  <div class="nt-step nt-y5 is-plan"><span class="nt-step-title">Evaluation and revision</span><span class="nt-step-note">Inter-annotator agreement and guideline v2.0, November 2026.</span><span class="nt-step-state">Planned</span></div>
+  <div class="nt-step nt-y4"><span class="nt-step-title">Pilot annotation</span><span class="nt-step-note">250 sentences by two annotators, 5 October to 21 November 2026. One annotator has not finished all sentences.</span><span class="nt-step-state">Partly done</span></div>
+  <div class="nt-step nt-y5 is-run"><span class="nt-step-title">Evaluation and revision</span><span class="nt-step-note">Preliminary inter-annotator agreement is available. Adjudication and guideline v2.0 to follow.</span><span class="nt-step-state">In progress</span></div>
 </div>
 
-## Outputs
+## Inter-annotator agreement (preliminary)
+
+Double annotation of the 250 pilot sentences ran from 5 October to 21 November 2026. The work of both annotators was checked by a native Batak Toba speaker consultant on 24 November 2026. One annotator has not finished all sentences, so preliminary agreement was computed on the 90 sentences (1,247 tokens) that both annotators completed.
+
+| Measure | Agreement | Cohen's kappa | Tagalog treebank kappa benchmark |
+|---|---:|---:|---:|
+| Part of speech (UPOS) | 87.8% | 0.864 | 0.75 |
+| Dependency relation (DEPREL) | 76.3% | 0.749 | 0.68 |
+| UAS (same head) | 84.0% | | |
+| LAS (same head and relation) | 68.5% | | |
+
+!!! note "Preliminary figures"
+    These figures are preliminary and cover only 90 of the 250 sentences. Agreement will be recomputed on all 250 sentences once annotation is complete, followed by adjudication and guideline version 2.0. Per-annotator CoNLL-U files are not published. The corpus will be released after adjudication.
+
+Preliminary interpretation:
+
+1. **Both kappa values are above the benchmark.** The guideline refers to the Tagalog UD-NewsCrawl treebank, with kappa 0.75 for parts of speech and 0.68 for relations. The sample is only 90 sentences, so these values are not final.
+2. **Most disagreement is about relation labels, not heads.** UAS is 84.0% but LAS is 68.5%, so the annotators usually agree on the head word and differ on the relation name.
+3. **The main causes are clear.** Most differences involve the particles *do*, *ma*, *pe*, the subject of *di-* verbs (`nsubj` versus `nsubj:pass`), and the marker *na*. One of the annotators systematically used labels that are not in Appendix A of the guideline.
+4. **The annotation worksheet needs aligning.** The DEPREL dropdown list in the worksheet does not yet match Appendix A of the guideline, for example it lacks `obj:agent`. The list will be aligned before the next round.
+
+Next steps: completing the annotation, recomputing agreement on all 250 sentences, adjudication with the native speaker consultant, guideline version 2.0, and then release of the adjudicated 250-sentence corpus.
+
+[:fontawesome-brands-github: Preliminary agreement report (in Indonesian)](https://github.com/FeliksMakarios/batak-toba-corpus-v2/blob/main/evaluation/iaa_pilot_sementara.md){ .md-button }
+
+## Deliverables
 
 <div class="grid cards" markdown>
 
@@ -55,7 +80,7 @@ Before this project, Batak Toba had no treebank, no part-of-speech or dependency
 
     ---
 
-    Visualised annotation examples from the guideline. Corpus sentences will follow once annotation is complete.
+    Visualised annotation examples from the guideline. Corpus sentences will follow once adjudication is complete.
 
     [:octicons-arrow-right-24: View trees](pohon.md)
 

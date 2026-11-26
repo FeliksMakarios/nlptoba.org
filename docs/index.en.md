@@ -102,7 +102,7 @@ hide:
   <a class="nt-stage nt-y1" href="anotasi-ud/">
     <span class="nt-status nt-status--run">IN PROGRESS · 2026</span>
     <h3>Stage 2 · Universal Dependencies Annotation</h3>
-    <p>UD annotation guideline v1.2, 250 pilot sentences, and double annotation by two annotators since 5 October 2026.</p>
+    <p>UD annotation guideline v1.2, double annotation of the 250 pilot sentences (5 October to 21 November 2026), and preliminary inter-annotator agreement. Adjudication and guideline v2.0 to follow.</p>
     <span class="nt-more">View UD annotation →</span>
   </a>
 </div>

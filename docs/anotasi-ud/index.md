@@ -27,9 +27,34 @@ Sampai penelitian ini dimulai, Batak Toba belum memiliki treebank, anotasi kelas
   <div class="nt-step nt-y1"><span class="nt-step-title">Korpus Tahap 1</span><span class="nt-step-note">Korpus multi-genre hasil hibah 2025.</span><span class="nt-step-state">Selesai</span></div>
   <div class="nt-step nt-y2"><span class="nt-step-title">Sintesis Keputusan</span><span class="nt-step-note">Kajian UD v2, UD Indonesia, Tagalog, dan Cebuano.</span><span class="nt-step-state">Selesai</span></div>
   <div class="nt-step nt-y3"><span class="nt-step-title">Pedoman v1.0 sampai v1.2</span><span class="nt-step-note">Pedoman dan contoh berlabel, diperbarui dengan masukan anotator.</span><span class="nt-step-state">Selesai</span></div>
-  <div class="nt-step nt-y4 is-run"><span class="nt-step-title">Anotasi Awal</span><span class="nt-step-note">250 kalimat oleh dua anotator, mulai 5 Oktober 2026.</span><span class="nt-step-state">Berjalan</span></div>
-  <div class="nt-step nt-y5 is-plan"><span class="nt-step-title">Evaluasi dan Revisi</span><span class="nt-step-note">Kesepakatan antaranotator dan pedoman v2.0, November 2026.</span><span class="nt-step-state">Rencana</span></div>
+  <div class="nt-step nt-y4"><span class="nt-step-title">Anotasi Awal</span><span class="nt-step-note">250 kalimat oleh dua anotator, 5 Oktober sampai 21 November 2026. Satu anotator belum menyelesaikan seluruh kalimat.</span><span class="nt-step-state">Selesai sebagian</span></div>
+  <div class="nt-step nt-y5 is-run"><span class="nt-step-title">Evaluasi dan Revisi</span><span class="nt-step-note">Kesepakatan antaranotator sementara sudah ada. Adjudikasi dan pedoman v2.0 menyusul.</span><span class="nt-step-state">Berjalan</span></div>
 </div>
+
+## Kesepakatan antaranotator (sementara)
+
+Anotasi ganda 250 kalimat pilot berlangsung 5 Oktober sampai 21 November 2026. Hasil kedua anotator diperiksa narasumber penutur asli Bahasa Batak Toba pada 24 November 2026. Satu anotator belum menyelesaikan seluruh kalimat, sehingga kesepakatan sementara dihitung pada 90 kalimat (1.247 token) yang lengkap pada kedua anotator.
+
+| Ukuran | Kesepakatan | Kappa Cohen | Patokan kappa treebank Tagalog |
+|---|---:|---:|---:|
+| Kelas kata (UPOS) | 87,8% | 0,864 | 0,75 |
+| Relasi dependensi (DEPREL) | 76,3% | 0,749 | 0,68 |
+| UAS (kata induk sama) | 84,0% | | |
+| LAS (kata induk dan relasi sama) | 68,5% | | |
+
+!!! note "Angka sementara"
+    Angka ini sementara dan baru mewakili 90 dari 250 kalimat. Kesepakatan akan dihitung ulang pada 250 kalimat setelah anotasi lengkap, lalu diikuti adjudikasi dan pedoman versi 2.0. Berkas CoNLL-U per anotator tidak diterbitkan. Korpus dirilis setelah adjudikasi.
+
+Tafsir sementara:
+
+1. **Kedua kappa sudah di atas patokan.** Pedoman merujuk treebank Tagalog UD-NewsCrawl dengan kappa 0,75 untuk kelas kata dan 0,68 untuk relasi. Sampelnya baru 90 kalimat, jadi angka ini belum final.
+2. **Ketidaksepakatan terbesar ada pada label relasi, bukan kata induk.** UAS 84,0% tetapi LAS 68,5%, sehingga kedua anotator umumnya sepakat tentang kata induk dan berbeda pada nama relasinya.
+3. **Penyebab utamanya jelas.** Perbedaan terbanyak menyangkut partikel *do*, *ma*, *pe*, subjek verba *di-* (`nsubj` dan `nsubj:pass`), dan penanda *na*. Pada salah satu anotator, label yang tidak ada di Lampiran A pedoman dipakai secara sistematis.
+4. **Lembar kerja perlu diselaraskan.** Daftar pilihan DEPREL di lembar kerja belum selaras dengan Lampiran A pedoman, misalnya belum memuat `obj:agent`. Daftar ini diselaraskan sebelum putaran berikutnya.
+
+Langkah berikutnya: penyelesaian anotasi, penghitungan ulang kesepakatan pada 250 kalimat, adjudikasi bersama narasumber penutur asli, pedoman versi 2.0, lalu rilis korpus 250 kalimat hasil adjudikasi.
+
+[:fontawesome-brands-github: Laporan kesepakatan sementara](https://github.com/FeliksMakarios/batak-toba-corpus-v2/blob/main/evaluation/iaa_pilot_sementara.md){ .md-button }
 
 ## Luaran
 
@@ -55,7 +80,7 @@ Sampai penelitian ini dimulai, Batak Toba belum memiliki treebank, anotasi kelas
 
     ---
 
-    Visualisasi contoh anotasi dari pedoman. Kalimat korpus menyusul setelah anotasi selesai.
+    Visualisasi contoh anotasi dari pedoman. Kalimat korpus menyusul setelah adjudikasi selesai.
 
     [:octicons-arrow-right-24: Lihat pohon](pohon.md)
 
