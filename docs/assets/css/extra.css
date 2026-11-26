@@ -211,11 +211,13 @@
 
 /* Kotak catatan dan lipatan (details) memakai warna kedua. Peringatan dan galat memakai
    --nt-err, satu-satunya warna di luar tiga warna dasar. */
-.md-typeset :is(.admonition, details) {
+/* [class] menaikkan spesifisitas agar mengalahkan aturan tema seperti .admonition.note
+   dan .admonition.info, yang memberi garis tepi biru dan sian bawaan. */
+.md-typeset :is(.admonition, details)[class] {
   --nt-adm: var(--nt-note);
   border-color: var(--nt-adm);
 }
-.md-typeset :is(.admonition, details):is(.warning, .caution, .attention, .danger, .error, .failure, .bug) {
+.md-typeset :is(.admonition, details)[class]:is(.warning, .caution, .attention, .danger, .error, .failure, .bug) {
   --nt-adm: var(--nt-err);
 }
 .md-typeset :is(.admonition, details) > :is(.admonition-title, summary) {
@@ -517,9 +519,10 @@
   letter-spacing: 0.05em;
   text-transform: uppercase;
   padding: 0 0.4em;
-  border-radius: 1rem;
+  border-radius: 0.6rem;
   border: 1px solid currentColor;
-  white-space: nowrap;
+  /* Label panjang seperti "Selesai sebagian" boleh turun baris agar tidak terpotong panah */
+  max-width: 100%;
 }
 
 @media screen and (max-width: 59.984375em) {

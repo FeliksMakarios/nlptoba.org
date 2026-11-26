@@ -102,7 +102,7 @@ hide:
   <a class="nt-stage nt-y1" href="anotasi-ud/">
     <span class="nt-status nt-status--run">BERJALAN · 2026</span>
     <h3>Tahap 2 · Anotasi Universal Dependencies</h3>
-    <p>Pedoman anotasi UD v1.2, 250 kalimat pilot, dan anotasi ganda oleh dua anotator sejak 5 Oktober 2026.</p>
+    <p>Pedoman anotasi UD v1.2, anotasi ganda 250 kalimat pilot (5 Oktober sampai 21 November 2026), dan kesepakatan antaranotator sementara. Adjudikasi dan pedoman v2.0 menyusul.</p>
     <span class="nt-more">Lihat anotasi UD →</span>
   </a>
 </div>
