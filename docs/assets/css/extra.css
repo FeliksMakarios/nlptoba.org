@@ -476,6 +476,16 @@
   clip-path: polygon(0 0, calc(100% - 0.9rem) 0, 100% 50%, calc(100% - 0.9rem) 100%, 0 100%);
 }
 .md-typeset .nt-step:last-child { margin-right: 0; }
+/* Langkah yang sedang berjalan disorot aksen: garis atas dan label berisi merah gorga */
+.md-typeset .nt-step.is-run {
+  box-shadow: inset 0 4px 0 var(--md-accent-fg-color);
+}
+.md-typeset .nt-step.is-run .nt-step-state {
+  color: var(--nt-on-accent);
+  background: var(--md-accent-fg-color);
+  border-color: var(--md-accent-fg-color);
+}
+
 /* Langkah rencana memakai latar redup, bukan opacity, agar teksnya tetap terbaca */
 .md-typeset .nt-step.is-plan {
   background: var(--nt-plan-bg);
