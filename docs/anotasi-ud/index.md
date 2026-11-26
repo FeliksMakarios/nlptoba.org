@@ -1,4 +1,5 @@
 ---
+icon: material/sitemap-outline
 dataset: ud
 description: "Tahap 2 proyek NLP Batak Toba: pedoman anotasi Universal Dependencies, 250 kalimat pilot, dan keputusan utama untuk predikat awal serta diatesis Austronesia."
 title: Anotasi Universal Dependencies (Tahap 2)

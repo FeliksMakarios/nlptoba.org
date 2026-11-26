@@ -1,4 +1,5 @@
 ---
+icon: material/swap-horizontal
 title: Parallel corpus
 description: "Sentence-level Batak Toba and Indonesian parallel corpus: 1,542 pairs, 182 human-validated, and inter-annotator agreement with kappa 0.170."
 ---

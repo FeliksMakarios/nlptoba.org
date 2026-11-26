@@ -1,4 +1,5 @@
 ---
+icon: material/information-outline
 description: "Peneliti, pendanaan, lisensi, cara mengutip, dan cara memberi masukan untuk proyek NLP Batak Toba."
 title: Tentang
 ---

@@ -1,4 +1,5 @@
 ---
+icon: material/swap-horizontal
 title: Korpus paralel
 description: "Korpus paralel tingkat kalimat Batak Toba dan Indonesia: 1.542 pasangan, 182 divalidasi manusia, dan kesepakatan antaranotator dengan kappa 0,170."
 ---

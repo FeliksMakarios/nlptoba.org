@@ -1,4 +1,5 @@
 ---
+icon: material/newspaper-variant-outline
 title: Kabar
 description: "Perkembangan terbaru proyek NLP Batak Toba: rilis korpus, versi pedoman anotasi, dan jadwal tahap berikutnya."
 ---

@@ -1,4 +1,5 @@
 ---
+icon: material/newspaper-variant-outline
 title: News
 description: "Latest progress of the Batak Toba NLP project: corpus releases, annotation guideline versions, and the schedule of the next stage."
 ---

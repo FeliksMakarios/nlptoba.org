@@ -1,4 +1,5 @@
 ---
+icon: material/file-tree-outline
 description: "Universal Dependencies trees for example Batak Toba sentences from the annotation guideline, with the meaning of each relation."
 title: Dependency trees
 ---
