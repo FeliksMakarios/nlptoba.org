@@ -136,7 +136,34 @@
     if (narrow.addEventListener) narrow.addEventListener("change", apply);
   }
 
+  // Tombol penciut menu samping. Pilihan disimpan di peramban agar tetap berlaku
+  // di halaman lain. Saat diciutkan, nama halaman muncul sebagai keterangan ikon.
+  function sidebarToggle() {
+    var btn = document.querySelector(".nt-side-toggle");
+    if (!btn) return;
+    var html = document.documentElement;
+    var links = document.querySelectorAll(".md-nav--primary a.md-nav__link, .nt-side-brand");
+    function apply(ciut) {
+      html.classList.toggle("nt-side-ciut", ciut);
+      btn.setAttribute("aria-pressed", ciut ? "true" : "false");
+      var label = btn.getAttribute(ciut ? "data-label-buka" : "data-label-ciut");
+      btn.setAttribute("aria-label", label);
+      btn.setAttribute("title", label);
+      for (var i = 0; i < links.length; i++) {
+        if (ciut) links[i].setAttribute("title", links[i].textContent.replace(/\s+/g, " ").trim());
+        else links[i].removeAttribute("title");
+      }
+    }
+    apply(html.classList.contains("nt-side-ciut"));
+    btn.addEventListener("click", function () {
+      var ciut = !html.classList.contains("nt-side-ciut");
+      apply(ciut);
+      try { localStorage.setItem("nlptoba:samping", ciut ? "ciut" : "lebar"); } catch (e) {}
+    });
+  }
+
   function init() {
+    sidebarToggle();
     sumber();
     roadmap();
     var search = document.querySelector(".md-search");

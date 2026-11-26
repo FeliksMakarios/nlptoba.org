@@ -1,4 +1,5 @@
 ---
+icon: material/sitemap-outline
 dataset: ud
 description: "Stage 2 of the Batak Toba NLP project: Universal Dependencies annotation guideline, 250 pilot sentences, and key decisions on predicate-initial order and Austronesian voice."
 title: Universal Dependencies Annotation (Stage 2)

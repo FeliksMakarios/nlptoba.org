@@ -1,4 +1,5 @@
 ---
+icon: material/database-outline
 dataset: korpus
 description: "Stage 1 Batak Toba and Indonesian text corpus: 97,952 Batak Toba words across five genres, counted with three methods, with genre distribution and limitations."
 title: Batak Toba Corpus (Stage 1)

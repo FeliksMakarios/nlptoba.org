@@ -26,7 +26,7 @@ scripts/sync_sources.py     Menyalin berkas dari repo penelitian ke docs/
 scripts/cek_tautan.py       Memeriksa tautan internal di hasil build
 scripts/korpus_ditinjau.txt Commit repo korpus yang terakhir ditinjau untuk halaman korpus
 hooks/indeks_pencarian.py   Memisahkan indeks pencarian per bahasa setelah build
-overrides/                  Penyesuaian templat tema (halaman 404, tautan repositori, pencarian)
+overrides/                  Penyesuaian templat tema (menu samping, halaman 404, tautan repositori, pencarian)
 docs/
 ├── index.md                Beranda (index.en.md untuk versi Inggris)
 ├── korpus/                 Tahap 1

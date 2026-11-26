@@ -2,6 +2,8 @@
 
 {% block extrahead %}
   {{ super() }}
+  {#- Pulihkan menu samping yang diciutkan sebelum halaman digambar, agar tidak berkedip. -#}
+  <script>try{if(localStorage.getItem("nlptoba:samping")==="ciut")document.documentElement.classList.add("nt-side-ciut")}catch(e){}</script>
   <link rel="icon" type="image/png" sizes="48x48" href="{{ 'assets/images/favicon-48.png' | url }}">
   <link rel="apple-touch-icon" href="{{ 'assets/images/apple-touch-icon.png' | url }}">
 

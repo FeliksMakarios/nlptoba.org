@@ -1,4 +1,5 @@
 ---
+icon: material/information-outline
 description: "Researcher, funding, licenses, how to cite, and how to give feedback on the Batak Toba NLP project."
 title: About
 ---

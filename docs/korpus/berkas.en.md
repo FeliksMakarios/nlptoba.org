@@ -1,4 +1,5 @@
 ---
+icon: material/download-outline
 title: Files and documentation
 description: "Data files of the Stage 1 Batak Toba corpus, column schema, and research documentation."
 ---

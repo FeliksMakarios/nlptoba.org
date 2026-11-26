@@ -1,4 +1,5 @@
 ---
+icon: material/database-outline
 dataset: korpus
 description: "Korpus teks Batak Toba dan Indonesia tahap 1: 97.952 kata Batak Toba dari lima genre, dihitung dengan tiga metode, beserta sebaran genre dan keterbatasannya."
 title: Korpus Batak Toba (Tahap 1)

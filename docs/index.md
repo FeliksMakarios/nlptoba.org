@@ -1,8 +1,8 @@
 ---
+icon: material/home-outline
 description: "Proyek NLP Batak Toba di Universitas Pelita Harapan: korpus teks Batak Toba dan Indonesia, pedoman anotasi Universal Dependencies, dan peta jalan lima tahun."
 title: Beranda
 hide:
-  - navigation
   - toc
 ---
 

@@ -74,7 +74,7 @@ def with_front_matter(text: str, description: str, toc_title: str) -> str:
         body = lines[0] + "\n\n" + toc + "\n" + "\n".join(lines[1:])
     else:
         body = toc + "\n" + text
-    return f"---\ndescription: {json.dumps(description, ensure_ascii=False)}\n---\n\n{body}\n"
+    return f"---\nicon: material/book-open-outline\ndescription: {json.dumps(description, ensure_ascii=False)}\n---\n\n{body}\n"
 
 
 def latest_pedoman(v2: Path):
@@ -165,7 +165,7 @@ def english_wrapper(pedoman: str, version: str, docx: str) -> str:
     title = lines[0].lstrip("# ").strip() if lines and lines[0].startswith("# ") else ""
     body = "\n".join(lines[1:] if title else lines)
     return (
-        "---\ndescription: "
+        "---\nicon: material/book-open-outline\ndescription: "
         + json.dumps(f"Universal Dependencies annotation guideline for Batak Toba, version {version}: "
                      "part-of-speech tags, morphological features, and dependency relations, following Nababan (1981).")
         + "\n---\n\n"

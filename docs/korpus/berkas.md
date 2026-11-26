@@ -1,4 +1,5 @@
 ---
+icon: material/download-outline
 title: Berkas dan dokumentasi
 description: "Berkas data korpus Batak Toba tahap 1, skema kolom, dan dokumentasi penelitian."
 ---
